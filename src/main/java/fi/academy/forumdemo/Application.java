@@ -89,8 +89,8 @@ public class Application {
             springViestit.add(v9);
 
             Viesti v10 = new Viesti("anonyymi", "joo samu on aika kuningas!");
-            v9.setAlue(yleinen);
-            v9.setParent(v2);
+            v10.setAlue(yleinen);
+            v10.setParent(v2);
             vr.save(v10);
             yleisetViestit.add(v10);
 
