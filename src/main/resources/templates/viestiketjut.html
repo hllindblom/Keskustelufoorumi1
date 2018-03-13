@@ -6,12 +6,49 @@
     <title>Forum - viestiketjut</title>
 </head>
 <body>
+
 <nav>
     <ul>
         <li><a href="etusivu.html">Etusivu</a> </li>
         <li><a href="alueet.html"> Foorumi</a></li>
     </ul>
 </nav>
+
+<h2 th:text="${viesti.getOtsikko()}"></h2>
+<table>
+    <tr>
+        <div style="border: 1px solid black">
+            <div class="kirjoittaja">
+                <p th:text="${viesti.kirjoittaja}"></p>
+            </div>
+            <div class="teksti">
+                <p th:text="${viesti.teksti}"></p>
+            </div>
+            <div class="timestamp">
+                <p th:text="${viesti.aika}"></p>
+            </div>
+            <div>
+                <a th:href="'/vastaa?id='+${viesti.viesti_id}"><button type="button">Vastaa</button> </a>
+            </div>
+        </div>
+    </tr>
+    <tr th:each="v : ${viesti.getLapset()}" th:object="${v}">
+        <div style="border: 1px solid black">
+            <div class="kirjoittaja">
+                <p th:text="*{kirjoittaja}"></p>
+            </div>
+            <div class="teksti">
+                <p th:text="*{teksti}"></p>
+            </div>
+            <div class="timestamp">
+                <p th:text="*{aika}"></p>
+            </div>
+            <div>
+                <a th:href="'/vastaa?id='+*{viesti_id}"><button type="button">Vastaa</button> </a>
+            </div>
+        </div>
+    </tr>
+</table>
 
 </body>
 </html>
