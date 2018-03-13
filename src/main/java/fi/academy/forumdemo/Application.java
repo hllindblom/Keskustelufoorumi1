@@ -95,8 +95,8 @@ public class Application {
             yleisetViestit.add(v10);
 
             Viesti v11 = new Viesti("anonyymi", "mäkään en tiedä kyl yhtään, java 8 all the way!");
-            v9.setAlue(java);
-            v9.setParent(v3);
+            v11.setAlue(java);
+            v11.setParent(v3);
             vr.save(v11);
             javaViestit.add(v11);
 
