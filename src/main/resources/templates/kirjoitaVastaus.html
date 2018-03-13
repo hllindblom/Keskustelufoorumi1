@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Forum - vastaa viestiin</title>
+</head>
+<body>
+<form th:action="@{luoUusiVastaus}" th:object="${uusiViesti}" method="post">
+    <input th:field="*{parent}" hidden/>
+    <input th:field="*{alue}" hidden/>
+    Kirjoittaja: <input th:type="text" th:field="*{kirjoittaja}" required="required"/><br/>
+    Teksti: <textarea th:field="*{teksti}" th:rows="4" th:cols="50" required="required"/><br/>
+    <input th:type="submit" th:value="Lähetä"/>
+</form>
+</body>
+</html>
