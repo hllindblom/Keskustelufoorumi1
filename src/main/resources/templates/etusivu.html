@@ -9,6 +9,14 @@
 <nav>
 
 </nav>
+<table>
+    <tr>
+        <th>Viimeiset 10 viestiä</th>
+    </tr>
+    <tr th:each="lanka : ${uudet}">
+        <td th:text="${lanka.getOtsikko()}"></td>
+    </tr>
+</table>
 
 </body>
 </html>
