@@ -7,13 +7,12 @@
 </head>
 <body>
 
-<nav>
+<nav class="nav">
     <ul>
-        <li><a href="etusivu.html">Etusivu</a> </li>
-        <li><a href="alueet.html"> Foorumi</a></li>
+        <li><a href="etusivu">Etusivu</a> </li>
+        <li><a href="alueet"> Foorumi</a></li>
     </ul>
 </nav>
-
 <h2 th:text="${viesti.getOtsikko()}"></h2>
 <table>
     <tr>
@@ -45,6 +44,17 @@
             </div>
             <div>
                 <a th:href="'/vastaa?id='+*{viesti_id}"><button type="button">Vastaa</button> </a>
+            </div>
+            <div class="level2" style="text-indent: 50px" th:each="v2: ${v.getLapset()}" th:object="${v2}">
+                <div class="kirjoittaja">
+                    <p th:text="*{kirjoittaja}"></p>
+                </div>
+                <div class="teksti">
+                    <p th:text="*{teksti}"></p>
+                </div>
+                <div class="timestamp">
+                    <p th:text="*{aika}"></p>
+                </div>
             </div>
         </div>
     </tr>
