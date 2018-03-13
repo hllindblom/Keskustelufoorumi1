@@ -89,14 +89,14 @@ public class Application {
             springViestit.add(v9);
 
             Viesti v10 = new Viesti("anonyymi", "joo samu on aika kuningas!");
-            v9.setAlue(yleinen);
-            v9.setParent(v2);
+            v10.setAlue(yleinen);
+            v10.setParent(v2);
             vr.save(v10);
             yleisetViestit.add(v10);
 
             Viesti v11 = new Viesti("anonyymi", "mäkään en tiedä kyl yhtään, java 8 all the way!");
-            v9.setAlue(java);
-            v9.setParent(v3);
+            v11.setAlue(java);
+            v11.setParent(v3);
             vr.save(v11);
             javaViestit.add(v11);
 
