@@ -3,28 +3,39 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    />
     <title>Forum - aihealueet</title>
 </head>
 <body>
 <nav class="nav">
     <ul>
-        <li><a href="etusivu.html">Etusivu</a> </li>
-        <li><a href="alueet.html"> Foorumi</a></li>
+        <li><a href="etusivu">Etusivu</a></li>
+        <li><a href="alueet"> Foorumi</a></li>
     </ul>
 </nav>
-<table>
-    <h3>Alueet</h3>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+        <div class="col-sm-8 text-left">
+            <h3>Aihelueet</h3>
+            <div class="table-responsive">
+            <table class="table">
 
-    <tr style="font-weight: bold">
-        <td>Nimi</td>
-        <td>Viestejä</td>
-    </tr>
-
-    <tr th:each="alue : ${alueet}">
-        <td><a th:href="@{/alue} + '?nimi=' + ${alue.nimi}" th:text="${alue.nimi}"/></td>
-        <td th:text="${alue.getViestit().size()}"></td>
-    </tr>
-</table>
-
+                <tr>
+                    <td class="taulurivi">Nimi</td>
+                    <td class="taulurivi">Viestejä</td>
+                </tr>
+                <tr class="aihealue" th:each="alue : ${alueet}">
+                    <td class="taulusisalto"><a th:href="@{/alue} + '?nimi=' + ${alue.nimi}" th:text="${alue.nimi}"/>
+                    </td>
+                    <td class="taulusisalto" th:text="${alue.getViestit().size()}"></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

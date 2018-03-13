@@ -22,3 +22,10 @@
 .nav li a:hover {
     background-color: #111111;
 }
+
+body {
+    text-align: center;
+}
+.aihealue {
+    padding: 50px;
+}
