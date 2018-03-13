@@ -45,6 +45,17 @@
             <div>
                 <a th:href="'/vastaa?id='+*{viesti_id}"><button type="button">Vastaa</button> </a>
             </div>
+            <div class="level2" style="text-indent: 50px" th:each="v2: ${v.getLapset()}" th:object="${v2}">
+                <div class="kirjoittaja">
+                    <p th:text="*{kirjoittaja}"></p>
+                </div>
+                <div class="teksti">
+                    <p th:text="*{teksti}"></p>
+                </div>
+                <div class="timestamp">
+                    <p th:text="*{aika}"></p>
+                </div>
+            </div>
         </div>
     </tr>
 </table>
