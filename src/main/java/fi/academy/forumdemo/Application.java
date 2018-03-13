@@ -102,9 +102,9 @@ public class Application {
 
             Viesti v12 = new Viesti("anonyymi", "javascriptin kirjottaminen on helppoo kuin heinänteko kun se osaa");
             v12.setAlue(javascript);
-            v12.setParent(v3);
+            v12.setParent(v4);
             vr.save(v12);
-            javaScriptViestit.add(v11);
+            javaScriptViestit.add(v12);
 
 	        yleinen.setViestit(yleisetViestit);
 	        ar.save(yleinen);
