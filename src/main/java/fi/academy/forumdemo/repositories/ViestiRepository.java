@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ViestiRepository extends CrudRepository<Viesti, Integer> {
+    @Query("SELECT v from Viesti v order by v.aika")
+    List<Viesti> ViestitAikajarjestyksessa();
+
 
     @Query("SELECT v from Viesti v WHERE parent_viesti_id is NULL and v.alue = :alue")
     List<Viesti> haeViestitIlmanParenttia(@Param("alue") Alue alue);
