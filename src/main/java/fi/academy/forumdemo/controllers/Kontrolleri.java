@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -35,7 +36,9 @@ public class Kontrolleri {
     public String alue(@RequestParam(name = "nimi") String nimi, Model model){
         Optional<Alue> optAlue = ar.findById(nimi);
         if (optAlue.isPresent()){
-            model.addAttribute("alue", optAlue.get());
+            Alue alue = optAlue.get();
+            List<Viesti> langat = vr.haeViestitIlmanParenttia(alue);
+            model.addAttribute("langat", langat);
             return "langat";
         }
         throw new RuntimeException("VIRHE");
