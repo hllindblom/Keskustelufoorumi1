@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Forum - viestiketjut</title>
 </head>
 <body>
@@ -13,8 +14,14 @@
         <li><a href="alueet"> Foorumi</a></li>
     </ul>
 </nav>
-<h2 th:text="${viesti.getOtsikko()}"></h2>
-<table>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+        <div class="col-sm-8 text-left">
+            <h3 th:text="${viesti.getOtsikko()}"></h3>
+            <div class="table-responsive">
+<table class="table">
     <tr>
         <div style="border: 1px solid black">
             <div class="kirjoittaja">
@@ -59,6 +66,10 @@
         </div>
     </tr>
 </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
