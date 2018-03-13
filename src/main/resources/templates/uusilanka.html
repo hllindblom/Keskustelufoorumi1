@@ -13,9 +13,11 @@
     </ul>
 </nav>
 <form th:action="@{/viestiketjut}" th:object="${uusiviesti}" method="post">
-    <p>Otsikko: <input type="text" th:field="*{otsikko}"/></p>
-    <p>Kirjoittaja: <input type="text" th:field="*{kirjoittaja}"/></p>
-    <p>Viesti: <input type="text" th:field="*{teksti}"/></p>
+    <input th:field="*{alue}" hidden/>
+    <input th:field="*{aika}" hidden/>
+    <p>Otsikko: <input th:type="text" th:field="*{otsikko}" required="required"/></p>
+    <p>Kirjoittaja: <input th:type="text" th:field="*{kirjoittaja}"/></p>
+    <p>Viesti: <textarea th:rows="4" th:cols="50" th:type="text" th:field="*{teksti}" required="required"/></p>
     <p><input type="submit" value="Lähetä" /> <input type="reset" value="Tyhjennä" /></p>
 </form>
 

@@ -53,9 +53,8 @@ public class Kontrolleri {
 
     @PostMapping ("/viestiketjut")
     public String uudenViestinLomakeKasittelija(@ModelAttribute Viesti uusiviesti, Model model){
-        model.addAttribute("viesti", uusiviesti);
         vr.save(uusiviesti);
-        return "viestiketjut";
+        return "redirect:naytaViestiketju?id=" + uusiviesti.getViesti_id();
     }
 
     @RequestMapping("/naytaViestiketju")
