@@ -1,6 +1,7 @@
 package fi.academy.forumdemo.controllers;
 
 import fi.academy.forumdemo.entities.Alue;
+import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -32,7 +34,9 @@ public class Kontrolleri {
     public String alue(@RequestParam(name = "nimi") String nimi, Model model){
         Optional<Alue> optAlue = ar.findById(nimi);
         if (optAlue.isPresent()){
-            model.addAttribute("alue", optAlue.get());
+            Alue alue = optAlue.get();
+            List<Viesti> langat = vr.haeViestitIlmanParenttia(alue);
+            model.addAttribute("langat", langat);
             return "langat";
         }
         throw new RuntimeException("VIRHE");

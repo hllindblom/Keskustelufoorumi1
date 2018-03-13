@@ -7,19 +7,15 @@
 </head>
 <body>
 
-<table th:object="${alue}">
+<table>
     <tr style="font-weight: bold">
         <td>Otsikko</td>
-        <td>Lähettäjä</td>
-        <td>Viesti</td>
-        <td>Lähetetty</td>
+
     </tr>
 
-    <tr th:each="viesti : ${alue.getViestit()}">
-        <td th:text="${viesti.getOtsikko()}"></td>
-        <td th:text="${viesti.getKirjoittaja()}"></td>
-        <td th:text="${viesti.getTeksti()}"></td>
-        <td th:text="${viesti.getAika()}"></td>
+    <tr th:each="lanka : ${langat}">
+        <td th:text="${lanka.getOtsikko()}"></td>
+
     </tr>
 </table>
 

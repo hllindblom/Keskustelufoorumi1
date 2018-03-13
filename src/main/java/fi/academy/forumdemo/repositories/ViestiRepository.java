@@ -2,7 +2,6 @@ package fi.academy.forumdemo.repositories;
 
 import fi.academy.forumdemo.entities.Alue;
 import fi.academy.forumdemo.entities.Viesti;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
