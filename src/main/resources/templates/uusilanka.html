@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
+    <title>Forum - uusi viestiketju</title>
+</head>
+<body>
+<form th:action="@{/viestiketjut}" th:object="${viesti}" method="post">
+    <p>Otsikko <input type="text" th:field="*{otsikko}"/></p>
+    <p>Kirjoittaja <input type="text" th:field="*{kirjoittaja}"/></p>
+    <p>Viesti <input type="text" th:field="*{viesti}"/></p>
+    <p><input type="submit" value="Lähetä" /> <input type="reset" value="Tyhjennä" /></p>
+</form>
+
+</body>
+</html>
