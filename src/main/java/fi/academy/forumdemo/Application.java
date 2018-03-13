@@ -65,6 +65,29 @@ public class Application {
             vr.save(v5);
             springViestit.add(v5);
 
+            Viesti v6 = new Viesti("hannaleena", "springi on kyllä aika hauskaa");
+            v6.setAlue(spring);
+            v6.setParent(v5);
+            vr.save(v6);
+            springViestit.add(v6);
+
+            Viesti v7 = new Viesti("anonyymi", "tosi hienoja tietokantoja saa tehtyä tällä Spring datalla");
+            v7.setAlue(spring);
+            v7.setParent(v5);
+            vr.save(v7);
+            springViestit.add(v7);
+
+            Viesti v8 = new Viesti("application.properties", "hannaleena", "kerätään tänne application.properties best practices");
+            v8.setAlue(spring);
+            vr.save(v8);
+            springViestit.add(v8);
+
+            Viesti v9 = new Viesti("anonyymi", "mä käytän yleensä spring.jpa.hibernate.ddl-auto=create-drop -määritystä");
+            v9.setAlue(spring);
+            v9.setParent(v8);
+            vr.save(v9);
+            springViestit.add(v9);
+
 	        yleinen.setViestit(yleisetViestit);
 	        ar.save(yleinen);
 

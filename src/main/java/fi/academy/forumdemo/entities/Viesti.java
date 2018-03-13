@@ -28,6 +28,11 @@ public class Viesti {
     public Viesti() {
     }
 
+    public Viesti(String kirjoittaja, String teksti) {
+        this.kirjoittaja = kirjoittaja;
+        this.teksti = teksti;
+    }
+
     public Viesti(String otsikko, String kirjoittaja, String teksti) {
         this.otsikko = otsikko;
         this.kirjoittaja = kirjoittaja;
