@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 public class Kontrolleri {
@@ -62,7 +64,11 @@ public class Kontrolleri {
         //näyttää viestin ja viestin vastauksen, ei vielä vastausten vastauksia
         Optional<Viesti> optViesti = vr.findById(id);
         if(optViesti.isPresent()){
-            model.addAttribute("viesti", optViesti.get());
+            Viesti viesti = optViesti.get();
+            while(viesti.getParent() != null){
+                viesti = viesti.getParent();
+            }
+            model.addAttribute("viesti", viesti);
             return  "viestiketjut";
         }
         throw new RuntimeException("VIRHE");
@@ -85,18 +91,17 @@ public class Kontrolleri {
     @PostMapping("/luoUusiVastaus")
     public String tallennavastaus(Viesti viesti, Model model){
         vr.save(viesti);
-
-        while(viesti.getParent() != null){
-            viesti = viesti.getParent();
-        }
-
         model.addAttribute("alueet", ar.findAll());
         return "redirect:naytaViestiketju?id=" + viesti.getViesti_id();
     }
 
-/*    @GetMapping("/etusivu")
+    @GetMapping("/etusivu")
     public String uusimmatViestitEtusivulle(Model model){
-        model.addAttribute("uudet", vr.findAllByAika());
+        List<Viesti> uudet = vr.ViestitAikajarjestyksessa();
+        List<Viesti> limited = uudet.stream()
+                .limit(10)
+                .collect(Collectors.toList());
+        model.addAttribute("limited", limited);
         return "etusivu";
-    }*/
+    }
 }
