@@ -12,7 +12,17 @@
         <li><a href="alueet.html"> Foorumi</a></li>
     </ul>
 </nav>
+<h1>Koodausfoorumi</h1>
+<p>Tervetuloa koodausfoorumille!</p>
+<table>
+    <tr>
+        <th>Viimeiset 10 viestiä</th>
+    </tr>
+    <tr th:each="lanka : ${uudet}">
+        <td th:text="${lanka.getOtsikko()}"></td>
+    </tr>
+</table>
+
 </body>
-    <h1>Koodausfoorumi</h1>
-    <p>Tervetuloa koodausfoorumille!</p>
+
 </html>

@@ -93,4 +93,10 @@ public class Kontrolleri {
         model.addAttribute("alueet", ar.findAll());
         return "redirect:naytaViestiketju?id=" + viesti.getViesti_id();
     }
+
+/*    @GetMapping("/etusivu")
+    public String uusimmatViestitEtusivulle(Model model){
+        model.addAttribute("uudet", vr.findAllByAika());
+        return "etusivu";
+    }*/
 }

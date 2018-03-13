@@ -20,8 +20,7 @@
     </tr>
 
     <tr th:each="lanka : ${langat}">
-        <td th:text="${lanka.getOtsikko()}"></td>
-
+        <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}" th:text="${lanka.getOtsikko()}"/></td>
     </tr>
 </table>
 
