@@ -6,10 +6,16 @@
     <title>Forum - uusi viestiketju</title>
 </head>
 <body>
-<form th:action="@{/viestiketjut}" th:object="${viesti}" method="post">
-    <p>Otsikko <input type="text" th:field="*{otsikko}"/></p>
-    <p>Kirjoittaja <input type="text" th:field="*{kirjoittaja}"/></p>
-    <p>Viesti <input type="text" th:field="*{viesti}"/></p>
+<nav>
+    <ul>
+        <li><a href="etusivu.html">Etusivu</a> </li>
+        <li><a href="alueet.html"> Foorumi</a></li>
+    </ul>
+</nav>
+<form th:action="@{/viestiketjut}" th:object="${uusiviesti}" method="post">
+    <p>Otsikko: <input type="text" th:field="*{otsikko}"/></p>
+    <p>Kirjoittaja: <input type="text" th:field="*{kirjoittaja}"/></p>
+    <p>Viesti: <input type="text" th:field="*{teksti}"/></p>
     <p><input type="submit" value="Lähetä" /> <input type="reset" value="Tyhjennä" /></p>
 </form>
 
