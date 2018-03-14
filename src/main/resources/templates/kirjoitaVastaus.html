@@ -8,23 +8,73 @@
 </head>
 <body>
 <div th:replace="nav :: navbar"/>
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" style="margin-top: 30px">
     <div class="row content">
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h3>Kirjoita vastaus</h3>
-            <div class="table-responsive">
-<form th:action="@{luoUusiVastaus}" th:object="${uusiViesti}" method="post">
-    <input th:field="*{parent}" hidden/>
-    <input th:field="*{alue}" hidden/>
-    Kirjoittaja: <input th:type="text" th:field="*{kirjoittaja}"/><br/>
-    Teksti: <textarea th:field="*{teksti}" th:rows="4" th:cols="50" required="required"/><br/>
-    <input th:type="submit" th:value="Lähetä"/>
-</form>
-            </div>
+            <form class="form-horizontal" th:action="@{luoUusiVastaus}" th:object="${uusiViesti}" method="post">
+                <div class="form-group" style="margin-bottom: 30px">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <h3>Kirjoita vastaus</h3>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <input th:field="*{parent}" hidden/>
+                    <input th:field="*{alue}" hidden/>
+                    <label class="control-label col-sm-2">Nimimerkki:</label>
+                    <div class="col-sm-10">
+                        <input th:type="text" th:field="*{kirjoittaja}" placeholder="Nimimerkki"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Viesti:</label>
+                    <div class="col-sm-10">
+                        <textarea th:field="*{teksti}" th:rows="4" th:cols="80" required="required"
+                                  placeholder="Kirjoita viesti"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-success" th:type="submit" th:value="Lähetä"/>
+                        <button type="reset" class="btn btn-warning">Tyhjennä</button>
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
