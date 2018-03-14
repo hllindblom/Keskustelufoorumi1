@@ -93,7 +93,7 @@ public class Viesti {
 
     public void setParent(Viesti parent) {
         this.parent = parent;
-        this.otsikko = parent.otsikko;
+        this.otsikko = "RE: " + parent.otsikko;
     }
 
     public List<Viesti> getLapset() {
