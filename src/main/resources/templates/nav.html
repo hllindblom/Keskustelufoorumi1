@@ -16,6 +16,12 @@
             <li><a href="etusivu">Kotisivu</a></li>
             <li><a href="alueet">Keskustelut</a></li>
         </ul>
+        <form class="navbar-form navbar-left"  action="/haku" method="POST">
+            <div class="form-group">
+            <input class="form-control" type="text" name="hakusana" placeholder="Hakusana" />
+            </div>
+            <input class="btn btn-default" type="submit" value="Hae"/>
+        </form>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu sisään</a></li>

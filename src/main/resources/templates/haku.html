@@ -9,7 +9,7 @@
 <body>
 <nav class="nav">
     <ul>
-        <li><a href="etusivu">Etusivu</a> </li>
+        <li><a href="etusivu">Etusivu</a></li>
         <li><a href="alueet"> Foorumi</a></li>
     </ul>
 </nav>
@@ -21,15 +21,17 @@
             <h3>Koodausfoorumi</h3>
             <p>Tervetuloa koodausfoorumille!</p>
             <div class="table-responsive">
-<table class="table" >
-    <tr>
-        <th>Haetut viestit</th>
-    </tr>
-    <tr th:each="hv : ${haetutViestit}">
-        <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}" th:text="${hv.getTeksti()}"/></td>
-        <td th:text="${hv.getAika()}"></td>
-    </tr>
-</table>
+
+
+                    <table class="table">
+                        <tr>
+                            <th>Haetut viestit</th>
+                        </tr>
+                        <tr th:each="hv : ${haetutViestit}">
+                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}" th:text="${hv.getTeksti()}"/></td>
+                            <td th:text="${hv.getAika()}"></td>
+                        </tr>
+                    </table>
             </div>
         </div>
     </div>
