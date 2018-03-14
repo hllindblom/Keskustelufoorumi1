@@ -1,6 +1,12 @@
 
 body {
     text-align: center;
+    background-image: url("https://yt3.ggpht.com/a-/AJLlDp3ESrlTaIG4fSXvvBbfLcby6KOusnc6dRVqFw=s900-mo-c-c0xffffffff-rj-k-no");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 25%;
+
+    background-attachment: fixed;
 }
 
 .aihealue {
