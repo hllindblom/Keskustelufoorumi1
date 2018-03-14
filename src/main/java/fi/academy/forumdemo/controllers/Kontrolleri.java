@@ -31,15 +31,15 @@ public class Kontrolleri {
     }
 
     @GetMapping("/alueet")
-    public String alueet(Model model){
+    public String alueet(Model model) {
         model.addAttribute("alueet", ar.findAll());
         return "alueet";
     }
 
     @GetMapping("/alue")
-    public String alue(@RequestParam(name = "nimi") String nimi, Model model){
+    public String alue(@RequestParam(name = "nimi") String nimi, Model model) {
         Optional<Alue> optAlue = ar.findById(nimi);
-        if (optAlue.isPresent()){
+        if (optAlue.isPresent()) {
             Alue alue = optAlue.get();
             List<Viesti> langat = vr.haeViestitIlmanParenttia(alue);
             model.addAttribute("alue", alue);
@@ -65,30 +65,30 @@ public class Kontrolleri {
     }
 
     @PostMapping ("/viestiketjut")
-    public String uudenViestinLomakeKasittelija(Viesti uusiViesti, Model model){
+    public String uudenViestinLomakeKasittelija(Viesti uusiViesti, Model model) {
         vr.save(uusiViesti);
         return "redirect:naytaViestiketju?id=" + uusiViesti.getViesti_id();
     }
 
     @RequestMapping("/naytaViestiketju")
-    public String viestiketju(@RequestParam(name="id") int id, Model model){
+    public String viestiketju(@RequestParam(name = "id") int id, Model model) {
         //näyttää viestin ja viestin vastauksen, ei vielä vastausten vastauksia
         Optional<Viesti> optViesti = vr.findById(id);
-        if(optViesti.isPresent()){
+        if (optViesti.isPresent()) {
             Viesti viesti = optViesti.get();
-            while(viesti.getParent() != null){
+            while (viesti.getParent() != null) {
                 viesti = viesti.getParent();
             }
             model.addAttribute("viesti", viesti);
-            return  "viestiketjut";
+            return "viestiketjut";
         }
         throw new RuntimeException("VIRHE");
     }
 
     @GetMapping("/vastaa")
-    public String vastaa(@RequestParam(name = "id") int id, Model model){
+    public String vastaa(@RequestParam(name = "id") int id, Model model) {
         Optional<Viesti> optViesti = vr.findById(id);
-        if(optViesti.isPresent()){
+        if (optViesti.isPresent()) {
             Viesti mihinVastataan = optViesti.get();
             Viesti uusiViesti = new Viesti();
             uusiViesti.setParent(mihinVastataan); //asetetaan parent-kentän arvo
@@ -100,14 +100,14 @@ public class Kontrolleri {
     }
 
     @PostMapping("/luoUusiVastaus")
-    public String tallennavastaus(Viesti viesti, Model model){
+    public String tallennavastaus(Viesti viesti, Model model) {
         vr.save(viesti);
         model.addAttribute("alueet", ar.findAll());
         return "redirect:naytaViestiketju?id=" + viesti.getViesti_id();
     }
 
     @GetMapping("/etusivu")
-    public String uusimmatViestitEtusivulle(Model model){
+    public String uusimmatViestitEtusivulle(Model model) {
         List<Viesti> uudet = vr.ViestitAikajarjestyksessa();
         List<Viesti> limited = uudet.stream()
                 .limit(10)
@@ -115,4 +115,14 @@ public class Kontrolleri {
         model.addAttribute("limited", limited);
         return "etusivu";
     }
+
+    @GetMapping("/haku")
+    public String haku(@RequestParam(name = "hakusana") String hakusana, Model model) {
+        List<Viesti> haetutViestit = vr.haeViestitHakusanalla(hakusana);
+        model.addAttribute("haetutViestit", haetutViestit);
+        return "haku";
+    }
+
 }
+
+
