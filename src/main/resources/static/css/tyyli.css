@@ -1,8 +1,73 @@
 
-
 body {
     text-align: center;
 }
+
 .aihealue {
     padding: 50px;
+}
+
+.kirjoittaja{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.teksti {
+    font-size: 125%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.timestamp {
+    float: right;
+}
+
+.vastaa {
+    margin-bottom: 0px;
+}
+
+.posti{
+    background-color: #f7f7f7;
+    position: relative;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.ylaoikee {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+
+}
+
+.ylavasen {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.keski {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: left;
+}
+
+.alaoikee {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.levelkaks{
+    margin-left: 5%;
+}
+
+.levelkolme{
+    margin-left: 10%;
+}
+
+.levelnelja{
+    margin-left: 15%;
 }

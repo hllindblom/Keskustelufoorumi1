@@ -116,13 +116,35 @@ public class Kontrolleri {
         return "etusivu";
     }
 
-    @GetMapping("/haku")
-    public String haku(@RequestParam(name = "hakusana") String hakusana, Model model) {
-        List<Viesti> haetutViestit = vr.haeViestitHakusanalla(hakusana);
+    @PostMapping("/haku")
+    public String haku(Hakusana hakusana, Model model) {
+        List<Viesti> haetutViestit = vr.haeViestitHakusanalla(hakusana.getHakusana());
+        List<Viesti> haetutViestitKirjoittaja = vr.haeKirjoittajanViestit(hakusana.getHakusana());
         model.addAttribute("haetutViestit", haetutViestit);
+        model.addAttribute("haetutviestitkirjoittaja", haetutViestitKirjoittaja);
         return "haku";
     }
 
+    @GetMapping("/nav")
+    public String hakuKasittelija(Model model) {
+        Hakusana hakusana = new Hakusana();
+        model.addAttribute("hakusana", hakusana);
+        return "nav";
+    }
+
+
 }
 
+
+class Hakusana {
+    private String hakusana;
+
+    public String getHakusana() {
+        return hakusana;
+    }
+
+    public void setHakusana(String hakusana) {
+        this.hakusana = hakusana;
+    }
+}
 
