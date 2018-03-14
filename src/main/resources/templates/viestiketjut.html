@@ -28,7 +28,7 @@
 
                     <tr>
                         <div class="col-sm-offset-2 col-sm-10">
-                            <div class="posti">
+                            <div class="well">
                                 <div class="kirjoittaja" th:text="${viesti.kirjoittaja}">
                                 </div>
 
@@ -49,7 +49,7 @@
 
                     <tr th:each="v : ${viesti.getLapset()}" th:object="${v}">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <div class="posti levelkaks">
+                            <div class="well levelkaks">
                                 <div class="kirjoittaja" th:text="*{kirjoittaja}">
                                 </div>
 
@@ -67,7 +67,7 @@
                             </div>
 
 
-                            <div class="posti levelkolme" th:each="v2: ${v.getLapset()}"
+                            <div class="well levelkolme" th:each="v2: ${v.getLapset()}"
                                  th:object="${v2}">
                                 <div class="kirjoittaja" th:text="*{kirjoittaja}">
                                 </div>
