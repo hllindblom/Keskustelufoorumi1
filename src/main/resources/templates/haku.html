@@ -13,17 +13,17 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h3>Koodausfoorumi</h3>
-            <p>Tervetuloa koodausfoorumille!</p>
-            <div class="table-responsive">
 
-
-                    <table class="table">
+            <div style="margin-left: 20%">
+                <h1 style="margin-bottom: 80px">Academyn Koodausfoorumi</h1>
+                <div class="table-responsive">
+                    <table class="table" style="width: 80%;">
                         <tr>
                             <th>Haetut viestit</th>
                         </tr>
                         <tr th:each="hv : ${haetutViestit}">
-                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}" th:text="${hv.getTeksti()}"/></td>
+                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}"
+                                   th:text="${hv.getTeksti()}"/></td>
                             <td th:text="${hv.getAika()}"></td>
                         </tr>
                         <tr>
@@ -31,11 +31,15 @@
                         </tr>
                         <tr th:each="hk : ${haetutviestitkirjoittaja}">
                             <td th:text="${hk.getKirjoittaja()}"></td>
-                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hk.getViesti_id()}" th:text="${hk.getTeksti()}"/></td>
+                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hk.getViesti_id()}"
+                                   th:text="${hk.getTeksti()}"/></td>
                             <td th:text="${hk.getAika()}"></td>
                         </tr>
                     </table>
+                </div>
+
             </div>
+
         </div>
     </div>
 </div>
