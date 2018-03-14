@@ -39,4 +39,11 @@ public class Alue {
     public void setViestit(List<Viesti> viestit) {
         this.viestit = viestit;
     }
+
+    @Override
+    public String toString() {
+        return "Alue{" +
+                "nimi='" + nimi + '\'' +
+                '}';
+    }
 }
