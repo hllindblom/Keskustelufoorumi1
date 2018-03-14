@@ -14,19 +14,24 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h3>Koodausfoorumi</h3>
-            <p>Tervetuloa koodausfoorumille!</p>
-            <div class="table-responsive">
-<table class="table" >
-    <tr>
-        <th>Viimeiset 10 viestiä</th>
-    </tr>
-    <tr th:each="lanka : ${limited}">
-        <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}" th:text="${lanka.getOtsikko()}"/></td>
-        <td th:text="${lanka.getAika()}"></td>
-    </tr>
-</table>
+
+            <div style="margin-left: 20%;">
+                <h1 style="margin-bottom: 80px">Academyn Koodausfoorumi</h1>
+                <div class="table-responsive">
+                    <table class="table" style="width: 70%;">
+                        <tr>
+                            <th>Viimeiset 10 viestiä</th>
+                        </tr>
+                        <tr th:each="lanka : ${limited}">
+
+                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}"
+                                   th:text="${lanka.getOtsikko()}"/></td>
+                            <td th:text="${lanka.getAika()}"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
