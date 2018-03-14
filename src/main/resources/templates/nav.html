@@ -4,6 +4,8 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -23,12 +25,73 @@
             <input class="btn btn-default" type="submit" value="Hae"/>
         </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in" data-toggle="modal" data-target="#kirjaudu"></span> Kirjaudu sisään</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#rekisteroidymodaali"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#kirjaudumodaali"><span class="glyphicon glyphicon-log-in" ></span> Kirjaudu sisään</a></li>
         </ul>
+        <div class="modal fade" id="kirjaudumodaali" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="padding:35px 50px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                    </div>
+                    <div class="modal-body" style="padding:40px 50px;">
+                        <div class="wrapper">
+                            <form class="form-signin">
+                                <h2 class="form-signin-heading">Kirjaudu sisään</h2>
+                                <input type="text" class="form-control" name="username" placeholder="Käyttäjänimi" required="" autofocus="" />
+                                <input type="password" class="form-control" name="password" placeholder="Salasana" required=""/>
+                                <label class="checkbox">
+                                    <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Muista minut
+                                </label>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Kirjaudu sisään</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                        <p>Etkö ole vielä jäsen? <a href="#">Rekisteröidy tästä!</a></p>
+                        <p>Unohditko salasanasi? <a href="#">Hae salasanasi tästä!</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
+    <div class="modal fade" id="rekisteroidymodaali" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <div class="wrapper">
+                        <form class="form-signin">
+                            <h2 class="form-signin-heading">Rekisteröidy</h2>
+                            <input type="text" class="form-control" name="username" placeholder="Käyttäjänimi" required="" autofocus="" />
+                            <input type="password" class="form-control" name="password" placeholder="Salasana" required=""/>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Rekisteröidy</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
 </nav>
+
 
 
 </body>
