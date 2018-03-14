@@ -119,7 +119,9 @@ public class Kontrolleri {
     @PostMapping("/haku")
     public String haku(Hakusana hakusana, Model model) {
         List<Viesti> haetutViestit = vr.haeViestitHakusanalla(hakusana.getHakusana());
+        List<Viesti> haetutViestitKirjoittaja = vr.haeKirjoittajanViestit(hakusana.getHakusana());
         model.addAttribute("haetutViestit", haetutViestit);
+        model.addAttribute("haetutviestitkirjoittaja", haetutViestitKirjoittaja);
         return "haku";
     }
 
