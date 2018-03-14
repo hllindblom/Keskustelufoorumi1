@@ -20,9 +20,8 @@
                 <h1 style="margin-bottom: 80px">Academyn Koodausfoorumi</h1>
                 <div class="table-responsive">
                     <table class="table" style="width: 70%;">
-                        <tr>
-                            <th>Viimeisimmät keskustelutt</th>
-                        </tr>
+                        <div style="font-size: 120%; font-weight: bold; margin-bottom: 30px">Viimeisimmät keskustelut</div>
+                        
 
                         <tr th:each="lanka : ${limited}">
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}"
