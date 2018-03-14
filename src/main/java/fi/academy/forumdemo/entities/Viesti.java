@@ -1,6 +1,7 @@
 package fi.academy.forumdemo.entities;
 
 import javax.persistence.*;
+import javax.xml.soap.Text;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Viesti {
     private Integer viesti_id;
     private String otsikko;
     private String kirjoittaja;
+    @Lob
     private String teksti;
     @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
     private LocalDateTime aika;
