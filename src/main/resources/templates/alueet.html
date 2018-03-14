@@ -24,8 +24,7 @@
                     <td class="taulurivi">Viestejä</td>
                 </tr>
                 <tr class="aihealue" th:each="alue : ${alueet}">
-                    <td class="taulusisalto"><a th:href="@{/alue} + '?nimi=' + ${alue.nimi}" th:text="${alue.nimi}"/>
-                    </td>
+                    <td class="taulusisalto"><a th:href="@{/alue} + '?nimi=' + ${alue.nimi}" th:text="${alue.nimi}"/></td>
                     <td class="taulusisalto" th:text="${alue.getViestit().size()}"></td>
                 </tr>
             </table>
