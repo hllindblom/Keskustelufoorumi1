@@ -33,7 +33,7 @@
                                 <div class="teksti" th:text="${viesti.teksti}">
                                 </div>
 
-                                <div class="timestamp" th:text="${viesti.aika}">
+                                <div class="timestamp" th:text="${viesti.aika.toLocalDate() + ' - ' + viesti.aika.toLocalTime()}">
                                 </div>
 
                                 <div class="vastaa">
@@ -54,7 +54,7 @@
                                 <div class="teksti" th:text="*{teksti}">
                                 </div>
 
-                                <div class="timestamp" th:text="*{aika}">
+                                <div class="timestamp" th:text="*{aika.toLocalDate() + ' - ' + aika.toLocalTime()}">
                                 </div>
 
                                 <div class="vastaa">
@@ -73,7 +73,7 @@
                                 <div class="teksti" th:text="*{teksti}">
                                 </div>
 
-                                <div class="timestamp" th:text="*{aika}">
+                                <div class="timestamp" th:text="*{aika.toLocalDate() + ' - ' + aika.toLocalTime()}">
                                 </div>
 
                                 <div class="vastaa">

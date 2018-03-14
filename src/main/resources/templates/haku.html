@@ -21,7 +21,7 @@
                         <tr>
                             <th>Haetut viestit</th>
                         </tr>
-                        
+
                         <tr th:each="hv : ${haetutViestit}">
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}"
                                    th:text="${hv.getTeksti()}"/></td>

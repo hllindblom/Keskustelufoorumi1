@@ -19,14 +19,13 @@
                 <h1 style="margin-bottom: 80px">Academyn Koodausfoorumi</h1>
                 <div class="table-responsive">
                     <table class="table" style="width: 70%;">
-                        <tr>
-                            <th>Viimeiset 10 viestiä</th>
-                        </tr>
+                        <div style="font-weight: bold; font-size: 120%; margin-bottom: 15px">  Viimeiset 10 viestiä</div>
+
                         <tr th:each="lanka : ${limited}">
 
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}"
                                    th:text="${lanka.getOtsikko()}"/></td>
-                            <td th:text="${lanka.getAika()}"></td>
+                            <td th:text="${lanka.getAika().toLocalDate() + ' - ' + lanka.getAika().toLocalTime()}"></td>
                         </tr>
                     </table>
                 </div>
