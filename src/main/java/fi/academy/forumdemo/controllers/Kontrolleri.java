@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,6 +42,7 @@ public class Kontrolleri {
         if (optAlue.isPresent()){
             Alue alue = optAlue.get();
             List<Viesti> langat = vr.haeViestitIlmanParenttia(alue);
+            model.addAttribute("alue", alue);
             model.addAttribute("langat", langat);
             return "langat";
         }
@@ -48,15 +50,24 @@ public class Kontrolleri {
     }
 
     @RequestMapping ("/uusilanka")
-    public String luoUusiViestiKetjuLomake (Model model){
-        model.addAttribute("uusiviesti", new Viesti());
-        return "uusilanka";
+    public String luoUusiViestiKetjuLomake (@RequestParam(name="alue") @Valid String alue, Model model){
+        Optional<Alue> optAlue = ar.findById(alue);
+        if (optAlue.isPresent()){
+            Alue hae = optAlue.get();
+            Viesti uusiViesti = new Viesti();
+            uusiViesti.setAlue(hae);
+            model.addAttribute("uusiViesti", uusiViesti);
+            return "uusilanka";
+
+        }
+        throw new RuntimeException("VIRHE");
+
     }
 
     @PostMapping ("/viestiketjut")
-    public String uudenViestinLomakeKasittelija(@ModelAttribute Viesti uusiviesti, Model model){
-        vr.save(uusiviesti);
-        return "redirect:naytaViestiketju?id=" + uusiviesti.getViesti_id();
+    public String uudenViestinLomakeKasittelija(Viesti uusiViesti, Model model){
+        vr.save(uusiViesti);
+        return "redirect:naytaViestiketju?id=" + uusiViesti.getViesti_id();
     }
 
     @RequestMapping("/naytaViestiketju")

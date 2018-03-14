@@ -16,7 +16,7 @@
         <div class="col-sm-8 text-left">
 
             <form class="form-horizontal" action="/action_page.php" th:action="@{/viestiketjut}"
-                  th:object="${uusiviesti}" method="post">
+                  th:object="${uusiViesti}" method="post">
 
                 <div class="form-group" style="margin-bottom: 30px">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="kirjoittaja">Nimimerkki</label>
                     <div class="col-sm-10">
-                        <input input th:type="text" th:field="*{otsikko}" required="required"
+                        <input input th:type="text" th:field="*{kirjoittaja}" required="required"
                                placeholder="Nimimerkki" id="kirjoittaja">
                     </div>
                 </div>
@@ -45,15 +45,14 @@
                       placeholder="Kirjoita viesti" id="teksti"/>
                     </div>
                 </div>
-                <input th:field="*{alue}" hidden/>
-                <input th:field="*{aika}" hidden/>
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">Lähetä</button>
+                        <input class="btn btn-success" th:type="submit" th:value="Lähetä"/>
                         <button type="reset" class="btn btn-warning">Tyhjennä</button>
                     </div>
                 </div>
+                <input type="hidden" name="alue.nimi" th:value="*{alue.nimi}"/>
             </form>
         </div>
     </div>

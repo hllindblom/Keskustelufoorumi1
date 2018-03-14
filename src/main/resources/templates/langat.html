@@ -25,12 +25,7 @@
                                th:text="${lanka.getOtsikko()}"/></td>
                     </tr>
                 </table>
-                <form th:action="@{/uusilanka}" style="float: right">
-                    <div>
-                        <input class="btn btn-success" type="submit" value="Uusi aihe">
-                    </div>
-                </form>
-
+                <a th:href="'/uusilanka?alue='+ ${alue.nimi}"> <button type="button">Uusi aihe</button> </a>
 
             </div>
         </div>
