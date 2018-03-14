@@ -9,7 +9,7 @@
 <body>
 <nav class="nav">
     <ul>
-        <li><a href="etusivu">Etusivu</a> </li>
+        <li><a href="etusivu">Etusivu</a></li>
         <li><a href="alueet"> Foorumi</a></li>
     </ul>
 </nav>
@@ -18,19 +18,51 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h3>Lisää uusi aihe</h3>
-            <div class="table-responsive">
-<form th:action="@{/viestiketjut}" th:object="${uusiviesti}" method="post">
-    <input th:field="*{alue}" hidden/>
-    <input th:field="*{aika}" hidden/>
-    <p>Otsikko: <input th:type="text" th:field="*{otsikko}" required="required"/></p>
-    <p>Kirjoittaja: <input th:type="text" th:field="*{kirjoittaja}"/></p>
-    <p>Viesti: <textarea th:rows="4" th:cols="50" th:type="text" th:field="*{teksti}" required="required"/></p>
-    <p><input type="submit" value="Lähetä" /> <input type="reset" value="Tyhjennä" /></p>
-</form>
-            </div>
+            <h3>Lisää uusi keskusteluaihe</h3>
+            <form class="form-horizontal" action="/action_page.php" th:action="@{/viestiketjut}"
+                  th:object="${uusiviesti}" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="otsikko">Otsikko</label>
+                    <div class="col-sm-10">
+                        <input th:type="text" th:field="*{otsikko}" required="required" placeholder="Kirjoita otsikko"
+                               id="otsikko">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="kirjoittaja">Kirjoittaja</label>
+                    <div class="col-sm-10">
+                        <input input th:type="text" th:field="*{otsikko}" required="required"
+                               placeholder="Käyttäjänimesi" id="kirjoittaja">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="teksti">Viesti</label>
+                    <div class="col-sm-10">
+            <textarea th:rows="4" th:cols="50" th:type="text" th:field="*{teksti}" required="required"
+                      placeholder="Kirjoita viesti" id="teksti"/>
+                    </div>
+                </div>
+                <input th:field="*{alue}" hidden/>
+                <input th:field="*{aika}" hidden/>
+
+
+                <input th:field="*{alue}" hidden/>
+                <input th:field="*{aika}" hidden/>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Lähetä</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="reset" class="btn btn-default">Tyhjennä</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 </body>
