@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ViestiRepository extends CrudRepository<Viesti, Integer> {
-    @Query("SELECT v from Viesti v order by v.aika")
+    @Query("SELECT v from Viesti v order by v.aika desc")
     List<Viesti> ViestitAikajarjestyksessa();
 
 
@@ -22,6 +22,7 @@ public interface ViestiRepository extends CrudRepository<Viesti, Integer> {
 
     @Query("Select v from Viesti v where kirjoittaja like CONCAT('%',:hakusana,'%')")
     List<Viesti> haeKirjoittajanViestit(@Param("hakusana")String hakusana);
+
 
 
 
