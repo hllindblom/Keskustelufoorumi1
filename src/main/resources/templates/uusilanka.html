@@ -13,14 +13,21 @@
         <li><a href="alueet"> Foorumi</a></li>
     </ul>
 </nav>
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" style="margin-top: 30px">
     <div class="row content">
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h3>Lisää uusi keskusteluaihe</h3>
+
             <form class="form-horizontal" action="/action_page.php" th:action="@{/viestiketjut}"
                   th:object="${uusiviesti}" method="post">
+
+                <div class="form-group" style="margin-bottom: 30px">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <h3>Lisää uusi aihe</h3>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="otsikko">Otsikko</label>
                     <div class="col-sm-10">
