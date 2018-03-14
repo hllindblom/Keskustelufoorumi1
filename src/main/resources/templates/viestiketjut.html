@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Forum - viestiketjut</title>
+
+
 </head>
 <body>
 <div th:replace="nav :: navbar"/>
@@ -13,53 +15,79 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h3 th:text="${viesti.getOtsikko()}"></h3>
+
             <div class="table-responsive">
-<table class="table">
-    <tr>
-        <div style="border: 1px solid black">
-            <div class="kirjoittaja">
-                <p th:text="${viesti.kirjoittaja}"></p>
-            </div>
-            <div class="teksti">
-                <p th:text="${viesti.teksti}"></p>
-            </div>
-            <div class="timestamp">
-                <p th:text="${viesti.aika}"></p>
-            </div>
-            <div>
-                <a th:href="'/vastaa?id='+${viesti.viesti_id}"><button type="button">Vastaa</button> </a>
-            </div>
-        </div>
-    </tr>
-    <tr th:each="v : ${viesti.getLapset()}" th:object="${v}">
-        <div style="border: 1px solid black">
-            <div class="kirjoittaja">
-                <p th:text="*{kirjoittaja}"></p>
-            </div>
-            <div class="teksti">
-                <p th:text="*{teksti}"></p>
-            </div>
-            <div class="timestamp">
-                <p th:text="*{aika}"></p>
-            </div>
-            <div>
-                <a th:href="'/vastaa?id='+*{viesti_id}"><button type="button">Vastaa</button> </a>
-            </div>
-            <div class="level2" style="text-indent: 50px" th:each="v2: ${v.getLapset()}" th:object="${v2}">
-                <div class="kirjoittaja">
-                    <p th:text="*{kirjoittaja}"></p>
-                </div>
-                <div class="teksti">
-                    <p th:text="*{teksti}"></p>
-                </div>
-                <div class="timestamp">
-                    <p th:text="*{aika}"></p>
-                </div>
-            </div>
-        </div>
-    </tr>
-</table>
+                <table class="table">
+                    <tr >
+                        <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 30px">
+                            <h2 th:text="${viesti.getOtsikko()}"></h2>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="posti">
+                                <div class="kirjoittaja" th:text="${viesti.kirjoittaja}">
+                                </div>
+
+                                <div class="teksti" th:text="${viesti.teksti}">
+                                </div>
+
+                                <div class="timestamp" th:text="${viesti.aika}">
+                                </div>
+
+                                <div class="vastaa">
+                                    <a th:href="'/vastaa?id='+${viesti.viesti_id}">
+                                        <button class="btn btn-success" type="button">Vastaa</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+
+                    <tr th:each="v : ${viesti.getLapset()}" th:object="${v}">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="posti levelkaks">
+                                <div class="kirjoittaja" th:text="*{kirjoittaja}">
+                                </div>
+
+                                <div class="teksti" th:text="*{teksti}">
+                                </div>
+
+                                <div class="timestamp" th:text="*{aika}">
+                                </div>
+
+                                <div class="vastaa">
+                                    <a th:href="'/vastaa?id='+*{viesti_id}">
+                                        <button class="btn btn-success" type="button">Vastaa</button>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="posti levelkolme" th:each="v2: ${v.getLapset()}"
+                                 th:object="${v2}">
+                                <div class="kirjoittaja" th:text="*{kirjoittaja}">
+                                </div>
+
+                                <div class="teksti" th:text="*{teksti}">
+                                </div>
+
+                                <div class="timestamp" th:text="*{aika}">
+                                </div>
+
+                                <div class="vastaa">
+                                    <a th:href="'/vastaa?id='+*{viesti_id}">
+                                        <button class="btn btn-success" type="button">Vastaa</button>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
