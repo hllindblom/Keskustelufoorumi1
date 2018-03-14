@@ -22,11 +22,11 @@
                         <tr>
                             <th>Viimeksi aktiivisena olleet keskustelut</th>
                         </tr>
-                        <tr th:each="lanka : ${limited}">
 
+                        <tr th:each="lanka : ${limited}">
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}"
                                    th:text="${lanka.getOtsikko()}"/></td>
-                            <td th:text="${lanka.getAika()}"></td>
+                            <td th:text="${lanka.getAika().toLocalDate() + ' - ' + lanka.getAika().toLocalTime()}"></td>
                         </tr>
                     </table>
                 </div>
