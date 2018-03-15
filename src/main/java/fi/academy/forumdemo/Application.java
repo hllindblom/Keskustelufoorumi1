@@ -1,13 +1,19 @@
 package fi.academy.forumdemo;
 
+import fi.academy.forumdemo.configurations.UserServiceImpl;
 import fi.academy.forumdemo.entities.Alue;
+import fi.academy.forumdemo.entities.User;
+import fi.academy.forumdemo.entities.UserRole;
 import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
+import fi.academy.forumdemo.repositories.UserRepository;
+import fi.academy.forumdemo.repositories.UserRoleRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +27,9 @@ public class Application {
 
 
 	@Bean
-    CommandLineRunner alusta(ViestiRepository vr, AlueRepository ar){
+    CommandLineRunner alusta(ViestiRepository vr, AlueRepository ar, UserRepository ur, UserRoleRepository urr, BCryptPasswordEncoder bcpe){
 	    return args -> {
+            UserServiceImpl usi = new UserServiceImpl();
             Alue yleinen = new Alue("Yleinen");
             ar.save(yleinen);
 
@@ -117,6 +124,22 @@ public class Application {
 
 	        spring.setViestit(springViestit);
 	        ar.save(spring);
+
+            UserRole user = new UserRole("user");
+            urr.save(user);
+            UserRole admin = new UserRole("admin");
+            urr.save(admin);
+            User allu = new User("allu",  bcpe.encode("allu"), 1, user);
+            ur.save(allu);
+            User sami = new User("sami", bcpe.encode("sami"),1, user);
+            ur.save(sami);
+            User tiina = new User("tiina", bcpe.encode("tiina"), 1, user);
+            ur.save(tiina);
+            User hannaleena = new User("hannaleena", bcpe.encode("hannaleena"), 1, user);
+            ur.save(hannaleena);
+            User adminUser = new User("admin", bcpe.encode("admin"), 1, admin);
+            ur.save(adminUser);
+
         };
     }
 }
