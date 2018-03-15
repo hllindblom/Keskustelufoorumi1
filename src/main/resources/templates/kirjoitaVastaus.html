@@ -32,7 +32,8 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Nimimerkki:</label>
                                         <div class="col-sm-10">
-
+                                            <p th:if="${auth == null}" th:text="anonyymi" required="required">
+                                            <p th:unless="${auth == null}" th:text="${auth.name}">
                                         </div>
                                     </div>
 
