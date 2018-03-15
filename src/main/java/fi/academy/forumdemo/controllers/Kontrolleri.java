@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -78,30 +79,6 @@ public class Kontrolleri {
         return "etusivu";
     }
 
-
-
-
-    @RequestMapping("/admin")
-    public String hallinnoi(Model model){
-        return "adminEtusivu";
-    }
-
-    @RequestMapping("/login")
-    public String login(Model model){
-        model.addAttribute("kayttaja", new User());
-        return "login";
-    }
-
-    @GetMapping("/rekisteroityminen")
-    public String rekisteroidy(Model model) {
-        return "rekisteroityminen";
-    }
-
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    public String currentUserName(Authentication authentication, Model model) {
-        model.addAttribute("auth", authentication);
-        return "testisivu";
-    }
 
 }
 
