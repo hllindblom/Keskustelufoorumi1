@@ -132,6 +132,10 @@ public class Kontrolleri {
         return "nav";
     }
 
+    @RequestMapping("/admin")
+    public String hallinnoi(Model model){
+        return "adminEtusivu";
+    }
 
 }
 
