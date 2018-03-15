@@ -5,10 +5,10 @@ import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.repositories.AlueRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SecurityKontrolleri {
@@ -22,7 +22,6 @@ public class SecurityKontrolleri {
         this.ar = ar;
         this.userService = userService;
     }
-
 
     @RequestMapping("/admin")
     public String hallinnoi(Model model){
@@ -38,6 +37,19 @@ public class SecurityKontrolleri {
     @GetMapping("/rekisteroityminen")
     public String rekisteroidy(Model model) {
         return "rekisteroityminen";
+    }
+
+    @RequestMapping(value = "/username2", method = RequestMethod.GET)
+    @ResponseBody
+    public String currentUserName2(Authentication authentication, Model model) {
+        model.addAttribute("auth", authentication);
+        return authentication.getName();
+    }
+
+    @RequestMapping(value = "/username")
+    public String currentUserName(Authentication authentication, Model model) {
+        model.addAttribute("auth", authentication);
+        return "demosivu";
     }
 
 }
