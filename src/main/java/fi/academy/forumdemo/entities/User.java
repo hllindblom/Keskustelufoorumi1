@@ -45,6 +45,15 @@ public class User {
         this.rooli = rooli;
     }
 
+    public User(String username, String password, String email, String description, int active, UserRole rooli) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.description = description;
+        this.active = active;
+        this.rooli = rooli;
+    }
+
     public String getEmail() {
         return email;
     }
