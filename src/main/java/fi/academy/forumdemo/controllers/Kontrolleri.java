@@ -36,6 +36,7 @@ public class Kontrolleri {
         return "alueet";
     }
 
+
     @GetMapping("/alue")
     public String alue(@RequestParam(name = "nimi") String nimi, Model model) {
         Optional<Alue> optAlue = ar.findById(nimi);
@@ -49,6 +50,7 @@ public class Kontrolleri {
         throw new RuntimeException("VIRHE");
     }
 
+    // Luodaan uusi keskustelulanka
     @RequestMapping ("/uusilanka")
     public String luoUusiViestiKetjuLomake (@RequestParam(name="alue") @Valid String alue, Model model){
         Optional<Alue> optAlue = ar.findById(alue);
