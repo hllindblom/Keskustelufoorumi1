@@ -2,8 +2,10 @@ package fi.academy.forumdemo.controllers;
 
 import fi.academy.forumdemo.configurations.UserService;
 import fi.academy.forumdemo.entities.Alue;
+import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
+import fi.academy.forumdemo.repositories.UserRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,12 +24,14 @@ public class LuomisKontrolleri {
     private ViestiRepository vr;
     private AlueRepository ar;
     private UserService userService;
+    private UserRepository ur;
 
     @Autowired
-    public LuomisKontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService) {
+    public LuomisKontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService, UserRepository ur) {
         this.vr = vr;
         this.ar = ar;
         this.userService = userService;
+        this.ur = ur;
     }
 
 
@@ -50,6 +54,13 @@ public class LuomisKontrolleri {
 
     @PostMapping("/viestiketjut")
     public String uudenViestinLomakeKasittelija(Viesti uusiViesti, Authentication authentication, Model model) {
+        User user;
+        if(authentication == null){
+            user = ur.findByUsername("anonyymi");
+        } else {
+            user = ur.findByUsername(authentication.getName());
+        }
+        uusiViesti.setKirjoittaja(user);
         vr.save(uusiViesti);
         model.addAttribute("auth", authentication);
         return "redirect:naytaViestiketju?id=" + uusiViesti.getViesti_id();
@@ -73,6 +84,13 @@ public class LuomisKontrolleri {
 
     @PostMapping("/luoUusiVastaus")
     public String tallennavastaus(Viesti viesti, Authentication authentication, Model model) {
+        User user;
+        if(authentication == null){
+            user = ur.findByUsername("anonyymi");
+        } else {
+            user = ur.findByUsername(authentication.getName());
+        }
+        viesti.setKirjoittaja(user);
         vr.save(viesti);
         model.addAttribute("alueet", ar.findAll());
         model.addAttribute("auth", authentication);
