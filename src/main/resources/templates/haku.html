@@ -27,7 +27,7 @@
                         <tr th:each="hv : ${haetutViestit}">
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}"
                                    th:text="${hv.getTeksti()}"/></td>
-                            <td th:text="${hv.getAika().toLocalTime()}"></td>
+                            <td th:text="${hv.getAika()}"></td>
                         </tr>
                     </table>
 
@@ -37,7 +37,7 @@
                             <td th:text="${hk.getKirjoittaja()}"></td>
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hk.getViesti_id()}"
                                    th:text="${hk.getTeksti()}"/></td>
-                            <td th:text="${hk.getAika().toLocalTime()}"></td>
+                            <td th:text="${hk.getAika()}"></td>
                         </tr>
                     </table>
                 </div>

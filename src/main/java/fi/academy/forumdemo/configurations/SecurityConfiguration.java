@@ -76,6 +76,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/nav").permitAll()
                 .antMatchers("/uusilanka").permitAll()
                 .antMatchers("/viestiketjut?").permitAll()
+                .antMatchers("/username").permitAll()
+                .antMatchers("/rekisteroityminen").permitAll()
                 //.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .antMatchers("/admin").hasAuthority("admin").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()

@@ -24,32 +24,28 @@ public class SecurityKontrolleri {
     }
 
     @RequestMapping("/admin")
-    public String hallinnoi(Model model){
+    public String hallinnoi(Authentication authentication, Model model){
+        model.addAttribute("auth", authentication);
         return "adminEtusivu";
     }
 
     @RequestMapping("/login")
-    public String login(Model model){
+    public String login(Authentication authentication, Model model){
         model.addAttribute("kayttaja", new User());
+        model.addAttribute("auth", authentication);
         return "login";
     }
 
     @GetMapping("/rekisteroityminen")
-    public String rekisteroidy(Model model) {
-        return "rekisteroityminen";
-    }
-
-    @RequestMapping(value = "/username2", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserName2(Authentication authentication, Model model) {
+    public String rekisteroidy(Authentication authentication, Model model) {
         model.addAttribute("auth", authentication);
-        return authentication.getName();
+        return "rekisteroityminen";
     }
 
     @RequestMapping(value = "/username")
     public String currentUserName(Authentication authentication, Model model) {
         model.addAttribute("auth", authentication);
-        return "demosivu";
+        return "nav";
     }
 
 }

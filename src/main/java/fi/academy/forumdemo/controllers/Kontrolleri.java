@@ -33,20 +33,22 @@ public class Kontrolleri {
     }
 
     @GetMapping("/alueet")
-    public String alueet(Model model) {
+    public String alueet(Authentication authentication, Model model) {
         model.addAttribute("alueet", ar.findAll());
+        model.addAttribute("auth", authentication);
         return "alueet";
     }
 
 
     @GetMapping("/alue")
-    public String alue(@RequestParam(name = "nimi") String nimi, Model model) {
+    public String alue(@RequestParam(name = "nimi") String nimi, Authentication authentication, Model model) {
         Optional<Alue> optAlue = ar.findById(nimi);
         if (optAlue.isPresent()) {
             Alue alue = optAlue.get();
             List<Viesti> langat = vr.haeViestitIlmanParenttia(alue);
             model.addAttribute("alue", alue);
             model.addAttribute("langat", langat);
+            model.addAttribute("auth", authentication);
             return "langat";
         }
         throw new RuntimeException("VIRHE");
@@ -55,7 +57,7 @@ public class Kontrolleri {
 
     //näyttää viestin ja viestin vastauksen, ei vielä vastausten vastauksia
     @RequestMapping("/naytaViestiketju")
-    public String viestiketju(@RequestParam(name = "id") int id, Model model) {
+    public String viestiketju(@RequestParam(name = "id") int id, Authentication authentication, Model model) {
         Optional<Viesti> optViesti = vr.findById(id);
         if (optViesti.isPresent()) {
             Viesti viesti = optViesti.get();
@@ -63,6 +65,7 @@ public class Kontrolleri {
                 viesti = viesti.getParent();
             }
             model.addAttribute("viesti", viesti);
+            model.addAttribute("auth", authentication);
             return "viestiketjut";
         }
         throw new RuntimeException("VIRHE");
@@ -70,12 +73,13 @@ public class Kontrolleri {
 
 
     @GetMapping("/etusivu")
-    public String uusimmatViestitEtusivulle(Model model) {
+    public String uusimmatViestitEtusivulle(Authentication authentication, Model model) {
         List<Viesti> uudet = vr.ViestitAikajarjestyksessa();
         List<Viesti> limited = uudet.stream()
                 .limit(10)
                 .collect(Collectors.toList());
         model.addAttribute("limited", limited);
+        model.addAttribute("auth", authentication);
         return "etusivu";
     }
 
