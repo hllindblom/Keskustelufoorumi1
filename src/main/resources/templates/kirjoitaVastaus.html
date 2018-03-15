@@ -32,7 +32,10 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Nimimerkki:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" th:type="text" th:field="*{kirjoittaja}" placeholder="Nimimerkki"/>
+                                            <input class="form-control" th:if="${auth == null}" th:field="*{kirjoittaja}" required="required"
+                                                   placeholder="Nimimerkki">
+                                            <input th:unless="${auth == null}" th:field="${auth.name}" required="required"
+                                                   th:placeholder="${auth.name}">
                                         </div>
                                     </div>
 

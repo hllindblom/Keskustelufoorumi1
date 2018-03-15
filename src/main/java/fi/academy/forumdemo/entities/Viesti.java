@@ -11,7 +11,11 @@ public class Viesti {
     @GeneratedValue
     private Integer viesti_id;
     private String otsikko;
-    private String kirjoittaja;
+
+    @OneToOne
+    @JoinColumn (name = "username")
+    private User kirjoittaja;
+
     @Lob
     private String teksti;
     @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
@@ -30,12 +34,12 @@ public class Viesti {
     public Viesti() {
     }
 
-    public Viesti(String kirjoittaja, String teksti) {
+    public Viesti(User kirjoittaja, String teksti) {
         this.kirjoittaja = kirjoittaja;
         this.teksti = teksti;
     }
 
-    public Viesti(String otsikko, String kirjoittaja, String teksti) {
+    public Viesti(String otsikko, User kirjoittaja, String teksti) {
         this.otsikko = otsikko;
         this.kirjoittaja = kirjoittaja;
         this.teksti = teksti;
@@ -65,11 +69,11 @@ public class Viesti {
         this.otsikko = otsikko;
     }
 
-    public String getKirjoittaja() {
+    public User getKirjoittaja() {
         return kirjoittaja;
     }
 
-    public void setKirjoittaja(String kirjoittaja) {
+    public void setKirjoittaja(User kirjoittaja) {
         this.kirjoittaja = kirjoittaja;
     }
 

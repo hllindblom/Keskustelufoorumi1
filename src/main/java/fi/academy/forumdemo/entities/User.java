@@ -20,6 +20,10 @@ public class User {
     public User() {
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public User(String username, String password, String email, String description) {
         this.username = username;
         this.password = password;
@@ -99,5 +103,18 @@ public class User {
 
     public void setRooli(UserRole rooli) {
         this.rooli = rooli;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", description='" + description + '\'' +
+                ", active=" + active +
+                ", rooli=" + rooli +
+                '}';
     }
 }
