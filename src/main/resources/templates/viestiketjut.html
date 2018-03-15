@@ -15,15 +15,15 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <div style="margin-left: 21px">
+
+            <div style="margin-left: 24px">
                 <table>
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 10px">
                                     <a th:href="@{/alueet}"><h3 class="inlineblock">Aihealueet</h3></a>
-                                    <a th:href="@{/alue}+'?nimi='+${viesti.getAlue().getNimi()}"><h3 class="inlineblock"
-                                                                                                     th:text="' / '+${viesti.getAlue().getNimi()}"></h3>
+                                    <a th:href="@{/alue}+'?nimi='+${viesti.getAlue().getNimi()}"><h3 class="inlineblock" th:text="' / '+${viesti.getAlue().getNimi()}"></h3>
                                     </a>
                                     <!--<h2 th:text="${viesti.getOtsikko()}"></h2>-->
                                 </div>
@@ -55,6 +55,7 @@
                                                         <button class="btn btn-success" type="button">Vastaa</button>
                                                     </a>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </tr>
