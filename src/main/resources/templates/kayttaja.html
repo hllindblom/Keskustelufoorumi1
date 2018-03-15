@@ -8,10 +8,87 @@
 </head>
 <body>
 <div th:replace="nav :: navbar"/>
-<h2>Käyttäjän tiedot</h2>
-<p th:utext="'<b>Käyttäjänimi: </b>' + ${kayttaja.username}"></p>
-<p th:utext="'<b>Email: </b>' + ${kayttaja.email}"></p>
-<p th:utext="'<b>Kuvaus: </b>' + ${kayttaja.description}"></p>
-<p><a href="/muokkaaKayttajaa"><button type="button">Muokkaa</button> </a></p>
+<!--<h2>Käyttäjän tiedot</h2>-->
+<!--<p th:utext="'<b>Käyttäjänimi: </b>' + ${kayttaja.username}"></p>-->
+<!--<p th:utext="'<b>Email: </b>' + ${kayttaja.email}"></p>-->
+<!--<p th:utext="'<b>Kuvaus: </b>' + ${kayttaja.description}"></p>-->
+<!--<p><a href="/muokkaaKayttajaa">-->
+    <!--<button type="button">Muokkaa</button>-->
+<!--</a></p>-->
+<div class="container-fluid text-center" style="margin-top: 30px">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+
+        <div class="col-sm-8 text-left">
+            <form class="form-horizontal" action="/action_page.php">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 5px">
+                                <h2>Omat tiedot</h2>
+                            </div>
+                        </tr>
+
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="well">
+
+                                    <div class="form-group">
+                                        <!--<label class="control-label col-sm-2">Käyttäjänimi:</label>-->
+                                        <h3 class="col-sm-8">Käyttäjänimi: <span class="label label-default" th:text="${kayttaja.username}"></span></h3>
+                                        <!--<div class="col-sm-10" th:text="${kayttaja.username}"></div>-->
+                                        <!--<label class="control-label col-sm-10" th:text="${kayttaja.username}"></label>-->
+                                        <!--<div class="col-sm-10">-->
+                                        <!--<input class="form-control" th:type="text" th:field="${kayttaja.username}" required="required"-->
+                                        <!--placeholder="Kirjoita otsikko"-->
+                                        <!--id="otsikko">-->
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="form-group">
+                                        <!--<label class="control-label col-sm-2">Sähköposti</label>-->
+                                        <!--<label class="col-sm-6" th:text="${kayttaja.email}"></label>-->
+                                        <h3 class="col-sm-8">Sähköposti: <span class="label label-default" th:text="${kayttaja.email}"></span></h3>
+                                        <!--<div class="col-sm-10">-->
+                                        <!--<input class="form-control" th:if="${auth == null}" th:field="${kayttaja.email}" required="required"-->
+                                        <!--placeholder="Nimimerkki">-->
+                                        <!--<input class="form-control" th:unless="${auth == null}" th:field="${auth.name}"-->
+                                        <!--required="required"-->
+                                        <!--th:placeholder="${auth.name}">-->
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="form-group">
+                                        <!--<h3 class="col-sm-2">Kuvaus:</h3>-->
+                                        <h3 class="col-sm-8">Kuvausteksti: <span class="label label-default" th:text="${kayttaja.description}"></span></h3>
+                                        <!--<textarea class="col-sm-10" cols="20" rows="4" th:text="${kayttaja.description}"></textarea>-->
+
+
+
+                                        <!--<div class="col-sm-10">-->
+                                        <!--<textarea class="form-control" th:rows="4" th:cols="50" th:type="text" th:field="*{teksti}" required="required"-->
+                                        <!--placeholder="Kirjoita viesti" id="teksti"/>-->
+                                        <!--</div>-->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2">
+                                            <a href="/muokkaaKayttajaa">
+                                                <button type="button" class="btn btn-warning">Muokkaa</button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
