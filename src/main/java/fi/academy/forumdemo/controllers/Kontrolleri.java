@@ -7,6 +7,7 @@ import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -152,6 +153,12 @@ public class Kontrolleri {
     @GetMapping("/rekisteroityminen")
     public String rekisteroidy(Model model) {
         return "rekisteroityminen";
+    }
+
+    @RequestMapping(value = "/username", method = RequestMethod.GET)
+    public String currentUserName(Authentication authentication, Model model) {
+        model.addAttribute("auth", authentication);
+        return "testisivu";
     }
 
 }
