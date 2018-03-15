@@ -14,11 +14,11 @@
         </div>
         <div class="col-sm-8 text-left">
             <div class="wrapper">
-                <form class="form-signin">
+                <form th:action="@{/login}" method="POST" class="form-signin">
                     <h2 class="form-signin-heading">Kirjaudu sisään</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Käyttäjänimi" required=""
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Käyttäjänimi" required=""
                            autofocus=""/>
-                    <input type="password" class="form-control" name="password" placeholder="Salasana" required=""/>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Salasana" required=""/>
                     <label class="checkbox">
                         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Muista minut
                     </label>

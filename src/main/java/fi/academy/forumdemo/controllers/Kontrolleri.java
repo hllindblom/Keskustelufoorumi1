@@ -1,6 +1,8 @@
 package fi.academy.forumdemo.controllers;
 
+import fi.academy.forumdemo.configurations.UserService;
 import fi.academy.forumdemo.entities.Alue;
+import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
@@ -19,11 +21,13 @@ import java.util.stream.Collectors;
 public class Kontrolleri {
     private ViestiRepository vr;
     private AlueRepository ar;
+    private UserService userService;
 
     @Autowired
-    public Kontrolleri(ViestiRepository vr, AlueRepository ar) {
+    public Kontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService) {
         this.vr = vr;
         this.ar = ar;
+        this.userService = userService;
     }
 
     @GetMapping("/alueet")
@@ -76,8 +80,14 @@ public class Kontrolleri {
 
 
 
-    @GetMapping("/login")
-    public String login(Model model) {
+    @RequestMapping("/admin")
+    public String hallinnoi(Model model){
+        return "adminEtusivu";
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model){
+        model.addAttribute("kayttaja", new User());
         return "login";
     }
 
@@ -85,7 +95,6 @@ public class Kontrolleri {
     public String rekisteroidy(Model model) {
         return "rekisteroityminen";
     }
-
 
 }
 
