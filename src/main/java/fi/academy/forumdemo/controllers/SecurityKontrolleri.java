@@ -73,11 +73,23 @@ public class SecurityKontrolleri {
         model.addAttribute("auth", authentication);
         return "redirect:login";
     }
-
+/*
     @RequestMapping(value = "/username")
     public String currentUserName(Authentication authentication, Model model) {
         model.addAttribute("auth", authentication);
         return "nav";
+    }*/
+
+    @RequestMapping("/kayttaja")
+    public String naytaKayttajanTiedot(Authentication authentication, Model model){
+        User kayttaja = ur.findByUsername(authentication.getName());
+        model.addAttribute("kayttaja", kayttaja);
+        return "kayttaja";
+    }
+
+    @RequestMapping("/muokkaaKayttajaa")
+    public String muokkaaKayttajaa(Authentication authentication, Model model){
+        return "etusivu";
     }
 
 }
