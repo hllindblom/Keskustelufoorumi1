@@ -84,6 +84,7 @@ public class SecurityKontrolleri {
     public String naytaKayttajanTiedot(Authentication authentication, Model model){
         User kayttaja = ur.findByUsername(authentication.getName());
         model.addAttribute("kayttaja", kayttaja);
+        model.addAttribute("auth", authentication);
         return "kayttaja";
     }
 
