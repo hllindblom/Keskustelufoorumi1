@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Forum - aihealueet</title>
 </head>
 <body>
-
-
+<h2>Käyttäjän tiedot</h2>
+<p th:utext="'<b>Käyttäjänimi: </b>' + ${kayttaja.username}"></p>
+<p th:utext="'<b>Email: </b>' + ${kayttaja.email}"></p>
+<p th:utext="'<b>Kuvaus: </b>' + ${kayttaja.description}"></p>
+<p><a href="/muokkaaKayttajaa"><button type="button">Muokkaa</button> </a></p>
 </body>
 </html>
