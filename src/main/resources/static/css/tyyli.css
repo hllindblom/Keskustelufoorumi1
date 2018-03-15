@@ -9,6 +9,10 @@ body {
     background-attachment: fixed;
 }
 
+h3, h4.inlineblock{
+    display: inline-block;
+    margin-bottom: 30px}
+
 .aihealue {
     padding: 50px;
 }

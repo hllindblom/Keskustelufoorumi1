@@ -23,7 +23,6 @@ public class SecurityKontrolleri {
         this.userService = userService;
     }
 
-
     @RequestMapping("/admin")
     public String hallinnoi(Authentication authentication, Model model){
         model.addAttribute("auth", authentication);

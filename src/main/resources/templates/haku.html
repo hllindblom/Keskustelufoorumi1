@@ -11,33 +11,33 @@
 <body>
 <div th:replace="nav :: navbar"/>
 <div class="container-fluid text-center">
+
+
     <div class="row content">
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
 
-            <div style="margin-left: 10%">
-                <h1 style="margin-bottom: 80px">Academyn Koodausfoorumi</h1>
+            <div style="margin-left: 20%">
+                <h1 style="margin-bottom: 30px;">Academyn Koodausfoorumi</h1>
                 <div class="table-responsive">
-                    <table class="table" style="width: 85%;">
-                        <tr>
-                            <th>Haetut viestit</th>
-                        </tr>
+                    <table class="table" style="width: 85%; margin-bottom: 30px;">
+                        <h3>Löydetyt viestit</h3>
 
                         <tr th:each="hv : ${haetutViestit}">
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hv.getViesti_id()}"
                                    th:text="${hv.getTeksti()}"/></td>
-                            <td th:text="${hv.getAika().toLocalTime()}"></td>
+                            <td th:text="${hv.getAika()}"></td>
                         </tr>
+                    </table>
 
-                        <tr>
-                            <th>Haetun kirjoittajan viestit</th>
-                        </tr>
+                    <table class="table" style="width: 85%;">
+                        <h3>Löydetyt nimimerkit</h3>
                         <tr th:each="hk : ${haetutviestitkirjoittaja}">
                             <td th:text="${hk.getKirjoittaja()}"></td>
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${hk.getViesti_id()}"
                                    th:text="${hk.getTeksti()}"/></td>
-                            <td th:text="${hk.getAika().toLocalTime()}"></td>
+                            <td th:text="${hk.getAika()}"></td>
                         </tr>
                     </table>
                 </div>

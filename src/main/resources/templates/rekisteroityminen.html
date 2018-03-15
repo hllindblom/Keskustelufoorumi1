@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
@@ -13,20 +13,44 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <div class="wrapper">
-                <form class="form-signin">
-                    <h2 class="form-signin-heading">Rekisteröidy käyttäjäksi</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Käyttäjänimi" required=""
-                           autofocus=""/>
-                    <input type="password" class="form-control" name="password" placeholder="Salasana" required=""/>
+            <form class="form-horizontal">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 30px">
+                                <h2>Rekisteröidy käyttäjäksi</h2>
+                            </div>
+                        </tr>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Rekisteröidy</button>
-                </form>
-            </div>
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <div class="well" style="width: 80%;">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" name="username"
+                                                   placeholder="Käyttäjänimi"
+                                                   required=""
+                                                   autofocus="" style="margin-bottom: 10px;"/>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <input type="password" class="form-control" name="password"
+                                                   placeholder="Salasana"
+                                                   required="" style="margin-bottom: 10px;"/>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-bottom: 10px;">Rekisteröidy
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
 
 
 </body>
