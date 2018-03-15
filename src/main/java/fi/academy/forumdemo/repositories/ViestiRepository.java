@@ -23,7 +23,7 @@ public interface ViestiRepository extends CrudRepository<Viesti, Integer> {
     List<Viesti> haeViestitHakusanalla(@Param("hakusana")String hakusana);
 
     // Haetaan viestit joissa hakusana esiintyy kirjoittajan nimessä.
-    @Query("Select v from Viesti v where kirjoittaja like CONCAT('%',:hakusana,'%')")
+    @Query("select v from Viesti v where v.kirjoittaja.username LIKE CONCAT('%',:hakusana,'%')")
     List<Viesti> haeKirjoittajanViestit(@Param("hakusana")String hakusana);
 
 
