@@ -134,6 +134,16 @@ public class Kontrolleri {
         return "nav";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/rekisteroityminen")
+    public String rekisteroidy(Model model) {
+        return "rekisteroityminen";
+    }
+
 
 }
 

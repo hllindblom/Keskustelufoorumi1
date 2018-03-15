@@ -21,7 +21,7 @@
                 <div class="table-responsive">
                     <table class="table" style="width: 70%;">
                         <div style="font-size: 120%; font-weight: bold; margin-bottom: 30px">Viimeisimmät keskustelut</div>
-                        
+
 
                         <tr th:each="lanka : ${limited}">
                             <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}"

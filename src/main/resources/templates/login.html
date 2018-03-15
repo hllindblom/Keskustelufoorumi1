@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Kirjaudu sisään</title>
+</head>
+<body>
+<div th:replace="nav :: navbar"/>
+<div class="container-fluid text-center" style="margin-top: 30px">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+        <div class="col-sm-8 text-left">
+            <div class="wrapper">
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">Kirjaudu sisään</h2>
+                    <input type="text" class="form-control" name="username" placeholder="Käyttäjänimi" required=""
+                           autofocus=""/>
+                    <input type="password" class="form-control" name="password" placeholder="Salasana" required=""/>
+                    <label class="checkbox">
+                        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Muista minut
+                    </label>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Kirjaudu</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
