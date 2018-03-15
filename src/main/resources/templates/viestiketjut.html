@@ -21,20 +21,10 @@
                         <tr>
                             <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 10px">
                                 <a th:href="@{/alueet}"><h3 class="inlineblock">Aihealueet</h3></a>
-                                <a th:href="@{/alue}+'?nimi='+${viesti.getAlue().getNimi()}"><h3 class="inlineblock"
-                                                                                                 th:text="' / '+${viesti.getAlue().getNimi()}"></h3>
-                                </a>
+                                <a th:href="@{/alue}+'?nimi='+${viesti.getAlue().getNimi()}"><h3 class="inlineblock" th:text="' / '+${viesti.getAlue().getNimi()}"></h3></a>
                                 <h2 th:text="${viesti.getOtsikko()}"></h2>
                             </div>
                         </tr>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 30px">
-                                        <h2 th:text="${viesti.getOtsikko()}"></h2>
-                                    </div>
-                                </tr>
 
                                 <tr>
                                     <div class="col-sm-offset-2 col-sm-10">
