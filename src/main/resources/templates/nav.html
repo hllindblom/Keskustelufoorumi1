@@ -25,8 +25,8 @@
         </form>
 
         <ul class="nav navbar-nav navbar-right">
-            <!--<li th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white"></li>-->
-            <li><a href="/kayttaja" th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white; font-weight: bold"></a></li>
+            <li th:if="${auth != null}"><a href="/kayttaja" th:text="${auth.getName()}" style="color: white; font-weight: bold"></a></li>
+            <li th:if="${auth == null}"><a href="#" style="color: white; font-weight: bold">Vierailija</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" th:if="${auth == null}">
             <li><a href="rekisteroityminen"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
@@ -37,6 +37,7 @@
                 <input class="btn btn-default" type="submit" value="Kirjaudu ulos"/>
             </div>
         </form>
+
     </div>
 
 </nav>
