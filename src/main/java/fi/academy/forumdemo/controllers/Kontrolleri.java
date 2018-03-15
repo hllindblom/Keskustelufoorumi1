@@ -79,23 +79,6 @@ public class Kontrolleri {
 
 
 
-
-    @RequestMapping("/admin")
-    public String hallinnoi(Model model){
-        return "adminEtusivu";
-    }
-
-    @RequestMapping("/login")
-    public String login(Model model){
-        model.addAttribute("kayttaja", new User());
-        return "login";
-    }
-
-    @GetMapping("/rekisteroityminen")
-    public String rekisteroidy(Model model) {
-        return "rekisteroityminen";
-    }
-
 }
 
 
