@@ -26,8 +26,9 @@
             <input class="btn btn-default" type="submit" value="Hae"/>
         </form>
 
-        <ul class="nav navbar-right">
-            <li th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white"></li>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<li th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white"></li>-->
+            <li><a href="#" th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white; font-weight: bold"></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" th:if="${auth == null}">
             <li><a href="rekisteroityminen"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
