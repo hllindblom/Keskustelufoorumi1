@@ -67,14 +67,7 @@ public class LuomisKontrolleri {
             Viesti uusiViesti = new Viesti();
             uusiViesti.setParent(mihinVastataan); //asetetaan parent-kentän arvo
             uusiViesti.setAlue(mihinVastataan.getAlue()); //asetetaan alueeksi parentin alue
-            if(authentication==null){
-                uusiViesti.setKirjoittaja(ur.findByUsername("anonyymi"));
-            }
-            System.out.println(authentication.getName());
-            System.out.println(ur.findByUsername("anonyymi"));
-            System.out.println(ur.findByUsername(authentication.getName()));
 
-            uusiViesti.setKirjoittaja(ur.findByUsername(authentication.getName()));
             model.addAttribute("uusiViesti", uusiViesti);
             model.addAttribute("auth", authentication);
             return "kirjoitaVastaus";
