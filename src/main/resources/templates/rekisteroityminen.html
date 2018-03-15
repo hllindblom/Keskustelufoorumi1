@@ -13,7 +13,7 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="/kasitteleRekisteroityminen" th:object="${uusiKayttaja}" method="post">
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
@@ -27,19 +27,22 @@
                                 <div class="well" style="width: 80%;">
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" name="username"
+                                            <input type="text" class="form-control" th:field="*{username}"
                                                    placeholder="Käyttäjänimi"
                                                    required=""
                                                    autofocus="" style="margin-bottom: 10px;"/>
                                         </div>
                                         <div class="col-sm-12">
-                                            <input type="password" class="form-control" name="password"
+                                            <input type="password" class="form-control" th:field="*{password}"
                                                    placeholder="Salasana"
                                                    required="" style="margin-bottom: 10px;"/>
                                         </div>
+                                        <div>
+                                            <input th:field="*{active}"/>
+                                            <input th:field="*{rooli.role}"/>
+                                        </div>
                                         <div class="col-sm-12">
-                                            <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-bottom: 10px;">Rekisteröidy
-                                            </button>
+                                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rekisteröidy" style="margin-bottom: 10px;"/>
                                         </div>
                                     </div>
                                 </div>
