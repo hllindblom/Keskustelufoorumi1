@@ -21,7 +21,7 @@
             <div style="margin-left: 20%">
                 <h1 style="margin-bottom: 30px;">Academyn Koodausfoorumi</h1>
                 <div class="table-responsive">
-                    <table class="table" style="width: 85%; margin-bottom: 30px;">
+                    <table class="table" style="margin-bottom: 30px;">
                         <h3>Löydetyt viestit</h3>
 
                         <tr th:each="hv : ${haetutViestit}">
@@ -31,7 +31,7 @@
                         </tr>
                     </table>
 
-                    <table class="table" style="width: 85%;">
+                    <table class="table">
                         <h3>Löydetyt nimimerkit</h3>
                         <tr th:each="hk : ${haetutviestitkirjoittaja}">
                             <td th:text="${hk.getKirjoittaja()}"></td>
