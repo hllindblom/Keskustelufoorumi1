@@ -10,12 +10,21 @@ public class User {
 
     private String username;
     private String password;
+    private String email;
+    private String description;
     private int active;
 
     @ManyToOne
     private UserRole rooli;
 
     public User() {
+    }
+
+    public User(String username, String password, String email, String description) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.description = description;
     }
 
     public User(String username, String password) {
@@ -34,6 +43,22 @@ public class User {
         this.password = password;
         this.active = active;
         this.rooli = rooli;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getActive() {
