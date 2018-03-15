@@ -15,24 +15,27 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <!--<h3>Keskusteluaihe</h3>-->
-            <div class="table-responsive">
-                <h3 style="margin-bottom: 30px">Keskustelut</h3>
+            <div style="margin-left: 20%">
+                <div class="table-responsive">
+                    <h3 style="margin-bottom: 20px">Keskustelut</h3>
 
-                <table class="table table-hover">
-                    <tr>
-                        <td>Aihe</td>
-                        <td>Vastauksia</td>
+                    <table class="table table-hover">
+                        <tr>
+                            <td>Aihe</td>
+                            <td>Vastauksia</td>
 
-                    </tr>
+                        </tr>
 
-                    <tr th:each="lanka : ${langat}">
-                        <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}" th:text="${lanka.getOtsikko()}"/></td>
-                        <td th:text="${lanka.getLapset().size()}"></td>
-                    </tr>
-                </table>
-                <a th:href="'/uusilanka?alue='+ ${alue.nimi}"> <button class="btn btn-success" type="button">Uusi aihe</button> </a>
-
+                        <tr th:each="lanka : ${langat}">
+                            <td><a th:href="@{/naytaViestiketju} + '?id=' + ${lanka.getViesti_id()}"
+                                   th:text="${lanka.getOtsikko()}"/></td>
+                            <td th:text="${lanka.getLapset().size()}"></td>
+                        </tr>
+                    </table>
+                    <a th:href="'/uusilanka?alue='+ ${alue.nimi}">
+                        <button class="btn btn-success" type="button">Uusi aihe</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
