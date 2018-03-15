@@ -1,6 +1,8 @@
 package fi.academy.forumdemo.controllers;
 
+import fi.academy.forumdemo.configurations.UserService;
 import fi.academy.forumdemo.entities.Alue;
+import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
@@ -23,11 +25,13 @@ import java.util.stream.Stream;
 public class Kontrolleri {
     private ViestiRepository vr;
     private AlueRepository ar;
+    private UserService userService;
 
     @Autowired
-    public Kontrolleri(ViestiRepository vr, AlueRepository ar) {
+    public Kontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService) {
         this.vr = vr;
         this.ar = ar;
+        this.userService = userService;
     }
 
     @GetMapping("/alueet")
@@ -35,6 +39,7 @@ public class Kontrolleri {
         model.addAttribute("alueet", ar.findAll());
         return "alueet";
     }
+
 
     @GetMapping("/alue")
     public String alue(@RequestParam(name = "nimi") String nimi, Model model) {
@@ -49,6 +54,7 @@ public class Kontrolleri {
         throw new RuntimeException("VIRHE");
     }
 
+    // Luodaan uusi keskustelulanka
     @RequestMapping ("/uusilanka")
     public String luoUusiViestiKetjuLomake (@RequestParam(name="alue") @Valid String alue, Model model){
         Optional<Alue> optAlue = ar.findById(alue);
@@ -135,6 +141,17 @@ public class Kontrolleri {
     @RequestMapping("/admin")
     public String hallinnoi(Model model){
         return "adminEtusivu";
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model){
+        model.addAttribute("kayttaja", new User());
+        return "login";
+    }
+
+    @GetMapping("/rekisteroityminen")
+    public String rekisteroidy(Model model) {
+        return "rekisteroityminen";
     }
 
 }
