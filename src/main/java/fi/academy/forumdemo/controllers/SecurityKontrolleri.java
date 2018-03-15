@@ -57,12 +57,10 @@ public class SecurityKontrolleri {
         return "rekisteroityminen";
     }
 
-    @PostMapping("/kasitteleRekisteroityminen")
-    public String kasitteleRekisteroityminen(User uusi, Authentication authentication, Model model){
-        System.out.println("böö");
+    @PostMapping("/rekisteroi")
+    public String rekisteroi(User uusi, Authentication authentication, Model model){
         String pw = uusi.getPassword();
         uusi.setPassword(bcpe.encode(pw));
-        System.out.println(uusi.getUsername() + ", " + uusi.getRooli());
         ur.save(uusi);
         model.addAttribute("auth", authentication);
         return "redirect:login";

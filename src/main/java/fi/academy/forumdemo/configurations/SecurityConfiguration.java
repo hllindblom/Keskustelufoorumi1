@@ -78,6 +78,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/viestiketjut?").permitAll()
                 .antMatchers("/username").permitAll()
                 .antMatchers("/rekisteroityminen").permitAll()
+                .antMatchers("/rekisteroi").permitAll()
                 //.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .antMatchers("/admin").hasAuthority("admin").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()

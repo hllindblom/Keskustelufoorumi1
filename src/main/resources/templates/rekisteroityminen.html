@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
@@ -13,7 +13,7 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <form class="form-horizontal" action="/kasitteleRekisteroityminen" th:object="${uusiKayttaja}" method="post">
+            <form class="form-horizontal" th:action="@{/rekisteroi}" th:object="${uusiKayttaja}" method="post">
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
@@ -38,11 +38,11 @@
                                                    required="" style="margin-bottom: 10px;"/>
                                         </div>
                                         <div>
-                                            <input th:field="*{active}"/>
-                                            <input th:field="*{rooli.role}"/>
+                                            <input type="hidden" th:field="*{active}"/>
+                                            <input type="hidden" th:field="*{rooli.role}"/>
                                         </div>
                                         <div class="col-sm-12">
-                                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rekisteröidy" style="margin-bottom: 10px;"/>
+                                            <input class="btn btn-success" type="submit" th:value="Rekisteröidy"/>
                                         </div>
                                     </div>
                                 </div>
