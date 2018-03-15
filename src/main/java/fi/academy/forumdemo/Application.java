@@ -61,7 +61,7 @@ public class Application {
             ur.save(hannaleena);
             User adminUser = new User("admin", bcpe.encode("admin"), 1, admin);
             ur.save(adminUser);
-            User anonyymi = new User("anonyymi");
+            User anonyymi = new User("anonyymi", bcpe.encode("anonyymi"), 1, user);
             ur.save(anonyymi);
 
 

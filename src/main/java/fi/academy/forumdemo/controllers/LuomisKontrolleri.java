@@ -2,8 +2,10 @@ package fi.academy.forumdemo.controllers;
 
 import fi.academy.forumdemo.configurations.UserService;
 import fi.academy.forumdemo.entities.Alue;
+import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
+import fi.academy.forumdemo.repositories.UserRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,6 +24,7 @@ public class LuomisKontrolleri {
     private ViestiRepository vr;
     private AlueRepository ar;
     private UserService userService;
+    private UserRepository ur;
 
     @Autowired
     public LuomisKontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService) {
@@ -64,6 +67,14 @@ public class LuomisKontrolleri {
             Viesti uusiViesti = new Viesti();
             uusiViesti.setParent(mihinVastataan); //asetetaan parent-kentän arvo
             uusiViesti.setAlue(mihinVastataan.getAlue()); //asetetaan alueeksi parentin alue
+            if(authentication==null){
+                uusiViesti.setKirjoittaja(ur.findByUsername("anonyymi"));
+            }
+            System.out.println(authentication.getName());
+            System.out.println(ur.findByUsername("anonyymi"));
+            System.out.println(ur.findByUsername(authentication.getName()));
+
+            uusiViesti.setKirjoittaja(ur.findByUsername(authentication.getName()));
             model.addAttribute("uusiViesti", uusiViesti);
             model.addAttribute("auth", authentication);
             return "kirjoitaVastaus";
