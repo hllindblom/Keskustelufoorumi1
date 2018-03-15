@@ -4,8 +4,6 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Forum - viestiketjut</title>
 
 
@@ -17,80 +15,99 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-
-            <div class="table-responsive">
-                <table class="table">
-                    <tr >
-                        <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 30px">
-                            <h2 th:text="${viesti.getOtsikko()}"></h2>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="well">
-                                <div class="kirjoittaja" th:text="${viesti.kirjoittaja.getUsername()}">
-                                </div>
-
-                                <div class="teksti" th:text="${viesti.teksti}">
-                                </div>
-
-                                <div class="timestamp" th:text="${viesti.aika.toLocalDate() + ' - ' + viesti.aika.toLocalTime()}">
-                                </div>
-
-                                <div class="vastaa">
-                                    <a th:href="'/vastaa?id='+${viesti.viesti_id}">
-                                        <button class="btn btn-success" type="button">Vastaa</button>
-                                    </a>
-                                </div>
+            <table style="margin-left: 2%">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 10px">
+                                <a th:href="@{/alueet}"><h3 class="inlineblock">Aihealueet</h3></a>
+                                <a th:href="@{/alue}+'?nimi='+${viesti.getAlue().getNimi()}"><h3 class="inlineblock"
+                                                                                                 th:text="' / '+${viesti.getAlue().getNimi()}"></h3>
+                                </a>
+                                <h2 th:text="${viesti.getOtsikko()}"></h2>
                             </div>
+                        </tr>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 30px">
+                                        <h2 th:text="${viesti.getOtsikko()}"></h2>
+                                    </div>
+                                </tr>
+
+                                <tr>
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="well">
+                                            <div class="kirjoittaja" th:text="${viesti.kirjoittaja.getUsername()}">
+                                            </div>
+
+                                            <div class="teksti" th:text="${viesti.teksti}">
+                                            </div>
+
+                                            <div class="timestamp"
+                                                 th:text="${viesti.aika.toLocalDate() + ' - ' + viesti.aika.toLocalTime()}">
+                                            </div>
+
+                                            <div class="vastaa">
+                                                <a th:href="'/vastaa?id='+${viesti.viesti_id}">
+                                                    <button class="btn btn-success" type="button">Vastaa</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tr>
+
+                                <tr th:each="v : ${viesti.getLapset()}" th:object="${v}">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="well levelkaks">
+                                            <div class="kirjoittaja" th:text="${v.kirjoittaja.getUsername()}">
+                                            </div>
+
+                                            <div class="teksti" th:text="*{teksti}">
+                                            </div>
+
+                                            <div class="timestamp"
+                                                 th:text="*{aika.toLocalDate() + ' - ' + aika.toLocalTime()}">
+                                            </div>
+
+                                            <div class="vastaa">
+                                                <a th:href="'/vastaa?id='+*{viesti_id}">
+                                                    <button class="btn btn-success" type="button">Vastaa</button>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="well levelkolme" th:each="v2: ${v.getLapset()}"
+                                             th:object="${v2}">
+                                            <div class="kirjoittaja" th:text="${v2.kirjoittaja.getUserName()}">
+                                            </div>
+
+
+                                            <div class="teksti" th:text="*{teksti}">
+                                            </div>
+
+                                            <div class="timestamp"
+                                                 th:text="*{aika.toLocalDate() + ' - ' + aika.toLocalTime()}">
+                                            </div>
+
+                                            <div class="vastaa">
+                                                <a th:href="'/vastaa?id='+*{viesti_id}">
+                                                    <button class="btn btn-success" type="button">Vastaa</button>
+                                                </a>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </tr>
+                            </table>
                         </div>
-                    </tr>
-
-                    <tr th:each="v : ${viesti.getLapset()}" th:object="${v}">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="well levelkaks">
-                                <div class="kirjoittaja" th:text="${v.kirjoittaja.getUsername()}">
-                                </div>
-
-                                <div class="teksti" th:text="*{teksti}">
-                                </div>
-
-                                <div class="timestamp" th:text="*{aika.toLocalDate() + ' - ' + aika.toLocalTime()}">
-                                </div>
-
-                                <div class="vastaa">
-                                    <a th:href="'/vastaa?id='+*{viesti_id}">
-                                        <button class="btn btn-success" type="button">Vastaa</button>
-                                    </a>
-                                </div>
-                            </div>
-
-
-                            <div class="well levelkolme" th:each="v2: ${v.getLapset()}"
-                                 th:object="${v2}">
-                                <div class="kirjoittaja" th:text="${v2.kirjoittaja.getUserName()}">
-                                </div>
-
-                                <div class="teksti" th:text="*{teksti}">
-                                </div>
-
-                                <div class="timestamp" th:text="*{aika.toLocalDate() + ' - ' + aika.toLocalTime()}">
-                                </div>
-
-                                <div class="vastaa">
-                                    <a th:href="'/vastaa?id='+*{viesti_id}">
-                                        <button class="btn btn-success" type="button">Vastaa</button>
-                                    </a>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                    </tr>
-                </table>
+                    </table>
+                </div>
+            </table>
             </div>
+
         </div>
     </div>
 </div>

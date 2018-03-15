@@ -4,8 +4,6 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -26,14 +24,15 @@
             <input class="btn btn-default" type="submit" value="Hae"/>
         </form>
 
-        <ul class="nav navbar-right">
-            <li th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white"></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
+            <!--<li th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white"></li>-->
+            <li><a href="#" th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white; font-weight: bold"></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" th:if="${auth == null}">
             <li><a href="rekisteroityminen"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
             <li><a href="login"><span class="glyphicon glyphicon-log-in" ></span> Kirjaudu sisään</a></li>
         </ul>
-        <form class="navbar-form navbar-right">
+        <form class="navbar-form navbar-right" th:if="${auth != null}">
             <div class="form-group">
                 <input class="btn btn-default" type="submit" value="Kirjaudu ulos"/>
             </div>
