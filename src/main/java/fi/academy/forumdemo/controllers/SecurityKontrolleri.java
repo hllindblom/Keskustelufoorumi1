@@ -46,6 +46,14 @@ public class SecurityKontrolleri {
         return "login";
     }
 
+    @RequestMapping("/logout")
+    public String logout(Authentication authentication, Model model){
+        model.addAttribute("auth", authentication);
+        return "etusivu";
+    }
+
+
+
     @GetMapping("/rekisteroityminen")
     public String rekisteroidy(Authentication authentication, Model model) {
         model.addAttribute("auth", authentication);
