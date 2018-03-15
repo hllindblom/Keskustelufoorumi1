@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Forum - aihealueet</title>
+</head>
+<body>
+<div th:replace="nav :: navbar"/>
+<form th:action="@{tallennaTiedot}" th:object="${kayttaja}" method="post">
+    Käyttäjänimi: <input th:type="text" th:value="${kayttaja.getUsername()}" th:field="*{username}" required="required"/> <br/>
+    Email: <input th:type="text" th:value="${kayttaja.getEmail()}" th:field="*{email}"/> <br/>
+    Kuvaus: <textarea th:type="text" th:value="${kayttaja.getDescription()}" th:field="*{description}" th:cols="60" th:rows="4" required="required"/><br/>
+    <input th:type="hidden" th:field="*{password}"/>
+    <input th:type="hidden" th:field="*{id}"/>
+    <input th:type="hidden" th:field="*{active}"/>
+    <input th:type="hidden" th:field="*{rooli}"/>
+    <input th:type="submit" th:value="Tallenna"/>
+</form>
+</body>
+</html>

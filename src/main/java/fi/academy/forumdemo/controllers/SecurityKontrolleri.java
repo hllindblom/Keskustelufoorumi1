@@ -89,7 +89,18 @@ public class SecurityKontrolleri {
 
     @RequestMapping("/muokkaaKayttajaa")
     public String muokkaaKayttajaa(Authentication authentication, Model model){
-        return "etusivu";
+        User kayttaja = ur.findByUsername(authentication.getName());
+        model.addAttribute("kayttaja", kayttaja);
+        model.addAttribute("auth", authentication);
+        return "muokkaaKayttaja";
+    }
+
+    @PostMapping("/tallennaTiedot")
+    public String tallennaTiedot(User muokattu, Authentication authentication, Model model){
+        ur.save(muokattu);
+        model.addAttribute("kayttaja", muokattu);
+        model.addAttribute("auth", authentication);
+        return "kayttaja";
     }
 
 }
