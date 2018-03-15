@@ -51,13 +51,13 @@ public class Application {
             urr.save(user);
             UserRole admin = new UserRole("admin");
             urr.save(admin);
-            User allu = new User("allu",  bcpe.encode("allu"), 1, user);
+            User allu = new User("allu",  bcpe.encode("allu"), "allu@mail.com", "kuvausteksti", 1, user);
             ur.save(allu);
-            User sami = new User("sami", bcpe.encode("sami"),1, user);
+            User sami = new User("sami", bcpe.encode("sami"), "sami@mail.com", "kuvausteksti",1, user);
             ur.save(sami);
-            User tiina = new User("tiina", bcpe.encode("tiina"), 1, user);
+            User tiina = new User("tiina", bcpe.encode("tiina"), "tiina@mail.com", "kuvausteksti",1, user);
             ur.save(tiina);
-            User hannaleena = new User("hannaleena", bcpe.encode("hannaleena"), 1, user);
+            User hannaleena = new User("hannaleena", bcpe.encode("hannaleena"), "hannaleena@mail.com", "uusi Java, Java, Spring, SQL, JS", 1, user);
             ur.save(hannaleena);
             User adminUser = new User("admin", bcpe.encode("admin"), 1, admin);
             ur.save(adminUser);
