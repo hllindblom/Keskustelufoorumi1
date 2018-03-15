@@ -13,18 +13,46 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <div class="wrapper">
-                <form class="form-signin">
-                    <h2 class="form-signin-heading">Kirjaudu sisään</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Käyttäjänimi" required=""
-                           autofocus=""/>
-                    <input type="password" class="form-control" name="password" placeholder="Salasana" required=""/>
-                    <label class="checkbox">
-                        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Muista minut
-                    </label>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Kirjaudu</button>
-                </form>
-            </div>
+            <form class="form-horizontal">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-10" style="margin-bottom: 30px">
+                                <h2>Kirjaudu sisään</h2>
+                            </div>
+                        </tr>
+
+                        <tr>
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <div class="well" style="width: 80%;">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" name="username"
+                                                   placeholder="Käyttäjänimi"
+                                                   required=""
+                                                   autofocus="" style="margin-bottom: 10px;"/>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <input type="password" class="form-control" name="password"
+                                                   placeholder="Salasana"
+                                                   required="" style="margin-bottom: 10px;"/>
+                                        </div>
+                                        <label class="col-sm-12">
+                                            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
+                                            Muista minut
+                                        </label>
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-bottom: 10px;">
+                                                Kirjaudu
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
     </div>
 </div>
