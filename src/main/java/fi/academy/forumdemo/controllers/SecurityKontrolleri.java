@@ -9,10 +9,16 @@ import fi.academy.forumdemo.repositories.UserRoleRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class SecurityKontrolleri {
@@ -47,10 +53,16 @@ public class SecurityKontrolleri {
     }
 
     @RequestMapping("/logout")
-    public String logout(Authentication authentication, Model model){
-        model.addAttribute("auth", authentication);
-        return "etusivu";
+    public String logout (HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("bööööööööööööööööööööööööööööööööööööö");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:etusivu";
     }
+
 
 
 

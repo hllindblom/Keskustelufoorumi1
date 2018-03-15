@@ -82,6 +82,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/kayttaja").permitAll()
                 .antMatchers("/muokkaaKayttajaa").permitAll()
                 .antMatchers("/tallennaTiedot").permitAll()
+                .antMatchers("/logout").permitAll()
                 //.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .antMatchers("/admin").hasAuthority("admin").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
@@ -91,7 +92,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
+                .logoutSuccessUrl("/etusivu").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
     }
 
