@@ -29,11 +29,11 @@
         <ul class="nav navbar-right">
             <li th:text="${auth == null} ? 'anonyymi' : ${auth.getName()}" style="color: white"></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" th:if="${auth == null}">
             <li><a href="rekisteroityminen"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
             <li><a href="login"><span class="glyphicon glyphicon-log-in" ></span> Kirjaudu sisään</a></li>
         </ul>
-        <form class="navbar-form navbar-right">
+        <form class="navbar-form navbar-right" th:if="${auth != null}">
             <div class="form-group">
                 <input class="btn btn-default" type="submit" value="Kirjaudu ulos"/>
             </div>
