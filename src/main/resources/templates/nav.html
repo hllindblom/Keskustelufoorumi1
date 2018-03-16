@@ -4,16 +4,14 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="static/img/favicon.ico" rel="icon" type="image/x-icon" />
     <title>Title</title>
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div class="navbar-header">
-
-            <div class="navbar-text">Koodausfoorumi</div>
-        </div>
         <ul class="nav navbar-nav">
+            <li><a href="#"> <img th:src="@{/images/logo2.png}" alt="logo" style="width: 180px;"></a> </li>
             <li><a href="etusivu">Kotisivu</a></li>
             <li><a href="alueet">Keskustelut</a></li>
         </ul>
