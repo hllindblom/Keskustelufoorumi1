@@ -75,6 +75,7 @@ public class LuomisKontrolleri {
             Viesti uusiViesti = new Viesti();
             uusiViesti.setParent(mihinVastataan); //asetetaan parent-kentän arvo
             uusiViesti.setAlue(mihinVastataan.getAlue()); //asetetaan alueeksi parentin alue
+
             model.addAttribute("uusiViesti", uusiViesti);
             model.addAttribute("auth", authentication);
             return "kirjoitaVastaus";
