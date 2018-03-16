@@ -65,7 +65,7 @@ public class Application {
             ur.save(anonyymi);
 
 
-            Viesti v = new Viesti("Koodaaminen on kivaa", allu, "moi mun mielestä koodaaminen on joskus ihan mukavaa");
+            Viesti v = new Viesti("Onko koodamisessa mitään järkeä?", allu, "moi mun mielestä koodaaminen on joskus ihan mukavaa puuhastelua. Mitä mieltä muut on?");
             v.setAlue(yleinen);
 	        vr.save(v);
 	        yleisetViestit.add(v);
@@ -75,7 +75,7 @@ public class Application {
 	        vr.save(v2);
 	        yleisetViestit.add(v2);
 
-	        Viesti v3 = new Viesti("buffered readeristä", tiina, "voisko joku kertoo mulle miten helvetissä buffered reader toimii");
+	        Viesti v3 = new Viesti("buffered readeristä", tiina, "voisko joku kertoo mulle miten helvetissä buffered reader toimii?");
 	        v3.setAlue(java);
 	        vr.save(v3);
 	        javaViestit.add(v3);
@@ -85,12 +85,12 @@ public class Application {
             vr.save(v4);
             javaScriptViestit.add(v4);
 
-            Viesti v5 = new Viesti("springiii!!", hannaleena, "tää on jokin viesti liittyen springiin");
+            Viesti v5 = new Viesti("Spring", hannaleena, "Tänne voitaisiin hei koota vähän käteviä tippejä liittyen Springiin!");
             v5.setAlue(spring);
             vr.save(v5);
             springViestit.add(v5);
 
-            Viesti v6 = new Viesti(sami, "springi on kyllä aika hauskaa");
+            Viesti v6 = new Viesti(sami, "springi on kyllä aika hauskaa.");
             v6.setAlue(spring);
             v6.setParent(v5);
             vr.save(v6);
@@ -113,7 +113,7 @@ public class Application {
             vr.save(v9);
             springViestit.add(v9);
 
-            Viesti v10 = new Viesti(anonyymi, "joo samu on aika kuningas!");
+            Viesti v10 = new Viesti(anonyymi, "No jaa.");
             v10.setAlue(yleinen);
             v10.setParent(v2);
             vr.save(v10);
@@ -130,6 +130,11 @@ public class Application {
             v12.setParent(v4);
             vr.save(v12);
             javaScriptViestit.add(v12);
+
+            Viesti v13 = new Viesti("Java beans",sami,"Tykkään Java pavuista nestemäisessä muodossa. Entäs te?");
+            v13.setAlue(java);
+            vr.save(v13);
+            javaViestit.add(v13);
 
 	        yleinen.setViestit(yleisetViestit);
 	        ar.save(yleinen);
