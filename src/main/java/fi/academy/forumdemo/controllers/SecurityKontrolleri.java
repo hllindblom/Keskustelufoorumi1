@@ -1,6 +1,7 @@
 package fi.academy.forumdemo.controllers;
 
 import fi.academy.forumdemo.configurations.UserService;
+import fi.academy.forumdemo.entities.Alue;
 import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.entities.UserRole;
 import fi.academy.forumdemo.repositories.AlueRepository;
@@ -42,6 +43,8 @@ public class SecurityKontrolleri {
     @RequestMapping("/admin")
     public String hallinnoi(Authentication authentication, Model model){
         model.addAttribute("auth", authentication);
+        Alue uusiAlue = new Alue();
+        model.addAttribute("uusiAlue", uusiAlue);
         return "adminEtusivu";
     }
 
