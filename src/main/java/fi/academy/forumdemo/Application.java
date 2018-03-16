@@ -137,9 +137,9 @@ public class Application {
             javaViestit.add(v13);
 
             Viesti v14 = new Viesti("Kahvikupit",sami,"Mitäs kahvikuppeja me nyt oikeen saatiinkaan käyttää? On tehty niin hankalaksi tämä elämä..");
-            v14.setAlue(java);
+            v14.setAlue(yleinen);
             vr.save(v14);
-            javaViestit.add(v14);
+            yleisetViestit.add(v14);
 
 	        yleinen.setViestit(yleisetViestit);
 	        ar.save(yleinen);
