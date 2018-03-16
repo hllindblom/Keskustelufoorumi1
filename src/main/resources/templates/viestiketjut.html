@@ -54,6 +54,11 @@
                                                     <a th:href="'/vastaa?id='+${viesti.viesti_id}">
                                                         <button class="btn btn-success" type="button">Vastaa</button>
                                                     </a>
+                                                    <span th:if="${user.rooli.role=='admin'}">
+                                                    <a th:href="'/poista?id='+${viesti.viesti_id}">
+                                                        <button class="btn btn-danger" type="button">Poista</button>
+                                                    </a>
+                                                    </span>
                                                 </div>
 
                                             </div>

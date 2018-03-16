@@ -5,6 +5,7 @@ import fi.academy.forumdemo.entities.Alue;
 import fi.academy.forumdemo.entities.User;
 import fi.academy.forumdemo.entities.Viesti;
 import fi.academy.forumdemo.repositories.AlueRepository;
+import fi.academy.forumdemo.repositories.UserRepository;
 import fi.academy.forumdemo.repositories.ViestiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -24,12 +25,14 @@ public class Kontrolleri {
     private ViestiRepository vr;
     private AlueRepository ar;
     private UserService userService;
+    private UserRepository ur;
 
     @Autowired
-    public Kontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService) {
+    public Kontrolleri(ViestiRepository vr, AlueRepository ar, UserService userService, UserRepository ur) {
         this.vr = vr;
         this.ar = ar;
         this.userService = userService;
+        this.ur = ur;
     }
 
     @GetMapping("/alueet")
@@ -55,7 +58,6 @@ public class Kontrolleri {
     }
 
 
-    //näyttää viestin ja viestin vastauksen, ei vielä vastausten vastauksia
     @RequestMapping("/naytaViestiketju")
     public String viestiketju(@RequestParam(name = "id") int id, Authentication authentication, Model model) {
         Optional<Viesti> optViesti = vr.findById(id);
@@ -66,6 +68,13 @@ public class Kontrolleri {
             }
             model.addAttribute("viesti", viesti);
             model.addAttribute("auth", authentication);
+            User user;
+            if(authentication == null){
+                user = ur.findByUsername("anonyymi");
+            } else {
+                user = ur.findByUsername(authentication.getName());
+            }
+            model.addAttribute("user", user);
             return "viestiketjut";
         }
         throw new RuntimeException("VIRHE");

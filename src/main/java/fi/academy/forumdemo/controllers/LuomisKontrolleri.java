@@ -62,6 +62,7 @@ public class LuomisKontrolleri {
         }
         uusiViesti.setKirjoittaja(user);
         vr.save(uusiViesti);
+        model.addAttribute("user", user);
         model.addAttribute("auth", authentication);
         return "redirect:naytaViestiketju?id=" + uusiViesti.getViesti_id();
     }
@@ -92,6 +93,7 @@ public class LuomisKontrolleri {
         }
         viesti.setKirjoittaja(user);
         vr.save(viesti);
+        model.addAttribute("user", user);
         model.addAttribute("alueet", ar.findAll());
         model.addAttribute("auth", authentication);
         return "redirect:naytaViestiketju?id=" + viesti.getViesti_id();
@@ -100,8 +102,22 @@ public class LuomisKontrolleri {
     @PostMapping("/luoUusiAihe")
     public String luoUusiAihe(Alue alue, Authentication authentication, Model model){
         ar.save(alue);
+        model.addAttribute("auth", authentication);
         model.addAttribute("alueet", ar.findAll());
         return "redirect:alueet";
+    }
+
+    @RequestMapping("/poista")
+    public String poista(@RequestParam (name = "id") int id, Authentication authentication, Model model){
+        Optional<Viesti> optionalViesti = vr.findById(id);
+        if(optionalViesti.isPresent()){
+            Viesti viesti = optionalViesti.get();
+            vr.delete(viesti);
+            model.addAttribute("auth", authentication);
+            model.addAttribute("alueet", ar.findAll());
+            return "redirect:alueet";
+        }
+        throw new RuntimeException("VIRHE");
     }
 
 

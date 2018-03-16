@@ -24,7 +24,7 @@ public class Viesti {
     @ManyToOne
     private Viesti parent;
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "parent")
     private List<Viesti> lapset;
 
     @ManyToOne
