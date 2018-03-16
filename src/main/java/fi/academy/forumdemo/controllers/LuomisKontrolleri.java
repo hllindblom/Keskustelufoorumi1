@@ -97,6 +97,13 @@ public class LuomisKontrolleri {
         return "redirect:naytaViestiketju?id=" + viesti.getViesti_id();
     }
 
+    @PostMapping("/luoUusiAihe")
+    public String luoUusiAihe(Alue alue, Authentication authentication, Model model){
+        ar.save(alue);
+        model.addAttribute("alueet", ar.findAll());
+        return "redirect:alueet";
+    }
+
 
 }
 

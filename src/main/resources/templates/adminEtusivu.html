@@ -10,5 +10,11 @@
 <body>
 <h2>Admin-etusivu</h2>
 
+<h3>Lisää uusi alue:</h3>
+<form th:action="@{luoUusiAihe}" th:object="${uusiAlue}" method="post">
+    Nimi: <input th:type="text" th:field="*{nimi}"/>
+    <input th:type="submit" th:value="Tallenna"/>
+</form>
+
 </body>
 </html>
