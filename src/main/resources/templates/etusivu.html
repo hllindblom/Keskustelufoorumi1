@@ -4,18 +4,46 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/tyyli.css" th:href="@{/css/tyyli.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Merriweather|Roboto" rel="stylesheet">
+
     <title>Forum - etusivu</title>
 </head>
 <body>
 <div th:replace="nav :: navbar"/>
+<div class="page-header">
+    <div>
+        <img th:src="@{/images/logo2.png}" alt="logo">
+    </div>
+</div>
+
+
 <div class="container-fluid text-center">
+
+
     <div class="row content">
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
 
-            <div style="margin-left: 20%;">
-                <h1 style="margin-bottom: 30px">Academyn Koodausfoorumi</h1>
+
+            <div style="margin-left: 20%; margin-top: 50px">
+                <div class="jumbotron" style="text-align: left; margin-bottom: 50px; color: white; background-color: #a8a8a8; font-family: 'Merriweather', serif; font-size: 90%">
+                    <h3>Menikö sormi suuhun koodin kanssa, MUTTA</h3>
+                    <h4>...Tommi on taas jossain</h4>
+                    <h4>...Samua ei kiinnosta</h4>
+                    <h4>...stackoverflowin käyttäminen on liian mainstreamia?</h4>
+
+                    <h2>Nyt voit tukeutua Academyn ikiomaan koodiFoorumiin!</h2>
+                </div>
+
+
+                <!--<div class="well well-lg" style="font-family: 'Roboto', sans-serif; background-color: #fcfcfc; margin-bottom: 100px;">-->
+                    <!--<h3>Tarvitsetko apua koodisi kanssa, mutta...</h3>-->
+                    <!--<h4>1. Tommi on taas jossain</h4>-->
+                    <!--<h4>2. Samua ei kiinnosta</h4>-->
+                    <!--<h4>3. stackowerflowin käyttäminen on liian mainstreamia?</h4>-->
+                    <!--<h3>Nyt voit tukeutua Academyn ikiomaan koodiFoorumiin!</h3>-->
+                <!--</div>-->
                 <div class="table-responsive">
                     <h3 style="margin-bottom: 20px;">Viimeisimmät viestit</h3>
                     <table class="table table-hover">
