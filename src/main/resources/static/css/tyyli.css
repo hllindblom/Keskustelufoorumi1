@@ -13,6 +13,9 @@ h3, h4.inlineblock{
     display: inline-block;
     margin-bottom: 30px}
 
+.logo {
+    background-image: url("https://academy-spring-2018.slack.com/messages/D8L695HE1/team/U8L322E3W/");
+}
 
 .aihealue {
     padding: 50px;
